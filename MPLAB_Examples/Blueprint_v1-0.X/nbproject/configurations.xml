@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>common.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -18,10 +19,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>main.c</itemPath>
-      <itemPath>common.h</itemPath>
       <itemPath>common.c</itemPath>
-      <itemPath>PIC24FJ256GA702_lib.h</itemPath>
-      <itemPath>PIC24FJ256GA702_lib.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
@@ -45,6 +43,7 @@
       <compileType>
         <linkerTool>
           <linkerLibItems>
+            <linkerLibFileItem>../PIC24FJ256GA702_lib.X/dist/default/production/PIC24FJ256GA702_lib.X.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
@@ -266,6 +265,8 @@
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-2aeff"/>
         <property key="poweroptions.powerenable" value="true"/>
+        <property key="programmerToGoFilePath"
+                  value="C:/GitHub/PES_25_26_G4/MPLAB_Examples/Blueprint_v1-0.X/debug/default/Blueprint_v1-0_ptg"/>
         <property key="programmerToGoImageName" value="Blueprint_v1-0_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>

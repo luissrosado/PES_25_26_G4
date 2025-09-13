@@ -12,8 +12,7 @@
 #ifndef COMMON_H
 #define	COMMON_H
 
-#include <xc.h> // include processor files - each processor file is guarded.  
-#include "PIC24FJ256GA702_lib.h"  // own microcontroller library
+#include <xc.h> // include processor files - each processor file is guarded.
 
 // TODO Insert appropriate #include <>
 

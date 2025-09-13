@@ -8,10 +8,11 @@
 #include <p24FJ256GA702.h>
 
 #include "common.h"
+#include "../PIC24FJ256GA702_lib.X/PIC24FJ256GA702_lib.h"
 
-
-void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void){
-    IFS0bits.T1IF = 0;
+void T1_ISR(void){
+    uint16_t *IFS_vec[8] = {&IFS0, &IFS1, &IFS2, &IFS3, &IFS4, &IFS5, &IFS6, &IFS7};
+    SET_BIT_ON_REG(*IFS_vec[T1_INTERRUPT.ifs_iec_id], T1_INTERRUPT.ifs_iec_bit, 0); // Set interrupt flag to 0
     
     toggleDigitalPin(RB3);
     
@@ -27,18 +28,16 @@ void setup(void){
         0x0000,
         0x0000
     );
-    setupTimer1(0x8030, 65000);
+    setupTimer1(0x8030, 650);
     
     // Setup Pin RB3 to a digital output
-    pinMode(RB3, OUTPUT, DIGITAL);
+    pinMode(RB3, OUTPUT);
     digitalWrite(RB3, 0);
     
     
     // Interrupt flags
-    IFS0bits.T1IF = 0;      // Clear Interrupt Flag
-    IPC0bits.T1IP = 6;      // Timer1 Priority Value
-    IEC0bits.T1IE = 1;      // Enable Timer1's Interrupt
-    INTCON2bits.GIE = 1;    // Enable Every Interrupt Flag    
+    setupInterrupt(T1_INTERRUPT, 6);
+    ENABLE_INTERRUPTS;
     
     return;
 }
