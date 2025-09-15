@@ -67,6 +67,10 @@ void toggleDigitalPin(struct pin_t pin){
 }
 
 void setupTimer1(uint16_t t1con, uint16_t pr1){
+    // Enable Timer1 module
+    SET_BIT_ON_REG(PMD1, 11, 0);
+    
+    // Set it up
     T1CON = t1con;
     PR1 = pr1;
     

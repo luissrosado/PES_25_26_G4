@@ -28,11 +28,11 @@ void setup(void){
         0x0000,
         0x0000
     );
-    setupTimer1(0x8030, 650);
+    setupTimer1(0x8030, 3000);
     
     // Setup Pin RB3 to a digital output
     pinMode(RB3, OUTPUT);
-    digitalWrite(RB3, 0);
+    digitalWrite(RB3, LOW);
     
     
     // Interrupt flags
@@ -44,6 +44,11 @@ void setup(void){
 
 void loop(void){
     // Insert your loop code here, to run repeatedly:
+    // Using idle, the internal clock keeps working and so does Timer1
+    Idle();
+    // Using sleep, the internal clock stops working and so does Timer1
+    // Unless it is using an external clock
+    //Sleep();
     
     return;
 }

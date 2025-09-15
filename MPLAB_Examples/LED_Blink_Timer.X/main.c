@@ -20,6 +20,18 @@ void alwaysSetup(void){
     LATA = 0;
     LATB = 0;
     
+    // Disable every peripheral
+    // Check pages 116 to 123 of the datasheet if you need to enable any
+    // The setup functions already enable them
+    PMD1 = 0xFFFF;
+    PMD2 = 0xFFFF;
+    PMD3 = 0xFFFF;
+    PMD4 = 0xFFFF;
+    PMD5 = 0xFFFF;
+    PMD6 = 0xFFFF;
+    PMD7 = 0xFFFF;
+    PMD8 = 0xFFFF;
+    
     return;
 }
 

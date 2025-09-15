@@ -170,53 +170,6 @@ void setupTimer1(uint16_t t1con, uint16_t pr1);
  * priority - the priority of the interrupt over the others
 
  */
-#define IFS0_addr 0x88
-#define IFS1_addr 0x8A
-#define IFS2_addr 0x8C
-#define IFS3_addr 0x8E
-#define IFS4_addr 0x90
-#define IFS5_addr 0x92
-#define IFS6_addr 0x94
-#define IFS7_addr 0x96
-#define IEC0_addr 0098
-#define IEC1_addr 009A
-#define IEC2_addr 009C
-#define IEC3_addr 009E
-#define IEC4_addr 00A0
-#define IEC5_addr 00A2
-#define IEC6_addr 00A4
-#define IEC7_addr 00A6
-#define IPC0_addr 00A8
-#define IPC1_addr 00AA
-#define IPC2_addr 00AC
-#define IPC3_addr 00AE
-#define IPC4_addr 00B0
-#define IPC5_addr 00B2
-#define IPC6_addr 00B4
-#define IPC7_addr 00B6
-#define IPC8_addr 00B8
-#define IPC9_addr 00BA
-#define IPC10_addr 00BC
-#define IPC11_addr 00BE
-#define IPC12_addr 00C0
-#define IPC13_addr 00C2
-#define IPC14_addr 00C4
-#define IPC15_addr 00C6
-#define IPC16_addr 00C8
-#define IPC17_addr 00CA
-#define IPC18_addr 00CC
-#define IPC19_addr 00CE
-#define IPC20_addr 00D0
-#define IPC21_addr 00D2
-#define IPC22_addr 00D4
-#define IPC23_addr 00D6
-#define IPC24_addr 00D8
-#define IPC25_addr 00DA
-#define IPC26_addr 00DC
-#define IPC27_addr 00DE
-#define IPC28_addr 00E0
-#define IPC29_addr 00E2
-
 struct interrupt_t{
     uint8_t ifs_iec_id;
     uint8_t ifs_iec_bit;

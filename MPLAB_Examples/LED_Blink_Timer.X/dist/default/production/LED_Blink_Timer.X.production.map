@@ -71,9 +71,9 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100               0x192           0x25b  (603)
 .const                       0x292                0x80            0xc0  (192)
-.text                        0x312               0x346           0x4e9  (1257)
+.text                        0x312               0x36e           0x525  (1317)
 
-                 Total "program" memory used (bytes):          0x804  (2052) <1%
+                 Total "program" memory used (bytes):          0x840  (2112) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x4000]
@@ -108,12 +108,12 @@ External Symbols in Program Memory (by address):
                   0x0003a8                  _digitalWrite
                   0x000402                  _toggleDigitalPin
                   0x000476                  _setupTimer1
-                  0x00048a                  _setupInterrupt
-                  0x0005a6                  _setupSOsc
-                  0x0005ca                  _setup
-                  0x000636                  _loop
-                  0x00063c                  _alwaysSetup
-                  0x00064e                  _main
+                  0x000490                  _setupInterrupt
+                  0x0005ac                  _setupSOsc
+                  0x0005d0                  _setup
+                  0x00063c                  _loop
+                  0x000644                  _alwaysSetup
+                  0x000676                  _main
 
 External Symbols in Program Memory (by name):
 
@@ -123,14 +123,14 @@ External Symbols in Program Memory (by name):
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x00063c                  _alwaysSetup
+                  0x000644                  _alwaysSetup
                   0x0003a8                  _digitalWrite
-                  0x000636                  _loop
-                  0x00064e                  _main
+                  0x00063c                  _loop
+                  0x000676                  _main
                   0x000312                  _pinMode
-                  0x0005ca                  _setup
-                  0x00048a                  _setupInterrupt
-                  0x0005a6                  _setupSOsc
+                  0x0005d0                  _setup
+                  0x000490                  _setupInterrupt
+                  0x0005ac                  _setupSOsc
                   0x000476                  _setupTimer1
                   0x000402                  _toggleDigitalPin
 
@@ -239,11 +239,11 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x11e7
+.debug_info       0x000000       0x12f5
  *(.debug_info)
- .debug_info      0x000000        0x233 build/default/production/main.o
- .debug_info      0x000233        0x447 build/default/production/common.o
- .debug_info      0x00067a        0xb6d ..\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(PIC24FJ256GA702_lib.o)
+ .debug_info      0x000000        0x323 build/default/production/main.o
+ .debug_info      0x000323        0x447 build/default/production/common.o
+ .debug_info      0x00076a        0xb8b ..\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(PIC24FJ256GA702_lib.o)
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x222
@@ -252,11 +252,11 @@ __FDEVOPT1
  .debug_abbrev    0x000070         0xef build/default/production/common.o
  .debug_abbrev    0x00015f         0xc3 ..\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(PIC24FJ256GA702_lib.o)
 
-.debug_line       0x000000        0x3e7
+.debug_line       0x000000        0x3f1
  *(.debug_line)
- .debug_line      0x000000        0x110 build/default/production/main.o
- .debug_line      0x000110        0x15b build/default/production/common.o
- .debug_line      0x00026b        0x17c ..\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(PIC24FJ256GA702_lib.o)
+ .debug_line      0x000000        0x118 build/default/production/main.o
+ .debug_line      0x000118        0x15c build/default/production/common.o
+ .debug_line      0x000274        0x17d ..\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(PIC24FJ256GA702_lib.o)
 
 .debug_frame      0x000000        0x186
  *(.debug_frame)
@@ -1665,17 +1665,17 @@ __c30_signature
  .const             0x8292         0x5c ..\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(PIC24FJ256GA702_lib.o)
  .const             0x82ee         0x24 build/default/production/common.o
 
-.text             0x000312        0x346
- .text            0x000312        0x2b8 ..\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(PIC24FJ256GA702_lib.o)
+.text             0x000312        0x36e
+ .text            0x000312        0x2be ..\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(PIC24FJ256GA702_lib.o)
                   0x000312                  _pinMode
                   0x0003a8                  _digitalWrite
                   0x000402                  _toggleDigitalPin
                   0x000476                  _setupTimer1
-                  0x00048a                  _setupInterrupt
-                  0x0005a6                  _setupSOsc
- .text            0x0005ca         0x72 build/default/production/common.o
-                  0x0005ca                  _setup
-                  0x000636                  _loop
- .text            0x00063c         0x1c build/default/production/main.o
-                  0x00063c                  _alwaysSetup
-                  0x00064e                  _main
+                  0x000490                  _setupInterrupt
+                  0x0005ac                  _setupSOsc
+ .text            0x0005d0         0x74 build/default/production/common.o
+                  0x0005d0                  _setup
+                  0x00063c                  _loop
+ .text            0x000644         0x3c build/default/production/main.o
+                  0x000644                  _alwaysSetup
+                  0x000676                  _main

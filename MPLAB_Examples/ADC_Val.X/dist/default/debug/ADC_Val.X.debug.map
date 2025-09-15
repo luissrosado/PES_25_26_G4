@@ -4,13 +4,13 @@ Tool Name:
   c:\program files\microchip\xc16\v2.10\bin\bin\..\bin/elf-ld.exe
 
 Command:
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp0000ba1c.00 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp0000ba1c.01 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp0000ba1c.02 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp0000ba1c.03 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp0000ba1c.04 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp0000ba1c.05 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp0000ba1c.06 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000021b0.00 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000021b0.01 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000021b0.02 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000021b0.03 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000021b0.04 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000021b0.05 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000021b0.06 \
   -p24FJ256GA702 \
   --mdfp=C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC24F-GA-GB_DFP/1.10.375/xc16 \
   -o \
@@ -77,10 +77,10 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100               0x10a           0x18f  (399)
-.text                        0x20a                0x68            0x9c  (156)
-.dinit                       0x272                 0x8             0xc  (12)
+.text                        0x20a                0x8e            0xd5  (213)
+.dinit                       0x298                 0x8             0xc  (12)
 
-                 Total "program" memory used (bytes):          0x237  (567) <1%
+                 Total "program" memory used (bytes):          0x270  (624) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x4000]
@@ -127,9 +127,9 @@ External Symbols in Program Memory (by address):
                   0x000152                  __data_init_da
                   0x000204                  __DefaultInterrupt
                   0x00020a                  _setup
-                  0x000228                  _loop
-                  0x000256                  _alwaysSetup
-                  0x000268                  _main
+                  0x00022e                  _loop
+                  0x00025c                  _alwaysSetup
+                  0x00028e                  _main
 
 External Symbols in Program Memory (by name):
 
@@ -138,9 +138,9 @@ External Symbols in Program Memory (by name):
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x000256                  _alwaysSetup
-                  0x000228                  _loop
-                  0x000268                  _main
+                  0x00025c                  _alwaysSetup
+                  0x00022e                  _loop
+                  0x00028e                  _main
                   0x00020a                  _setup
 
 Memory Configuration
@@ -283,10 +283,10 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000        0x7cd
+.debug_info       0x000000        0x8db
  *(.debug_info)
- .debug_info      0x000000        0x22b build/default/debug/main.o
- .debug_info      0x00022b        0x5a2 build/default/debug/common.o
+ .debug_info      0x000000        0x31b build/default/debug/main.o
+ .debug_info      0x00031b        0x5c0 build/default/debug/common.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x17b
@@ -294,10 +294,10 @@ __FDEVOPT1
  .debug_abbrev    0x000000         0x70 build/default/debug/main.o
  .debug_abbrev    0x000070        0x10b build/default/debug/common.o
 
-.debug_line       0x000000        0x228
+.debug_line       0x000000        0x231
  *(.debug_line)
- .debug_line      0x000000        0x110 build/default/debug/main.o
- .debug_line      0x000110        0x118 build/default/debug/common.o
+ .debug_line      0x000000        0x118 build/default/debug/main.o
+ .debug_line      0x000118        0x119 build/default/debug/common.o
 
 .debug_frame      0x000000         0x90
  *(.debug_frame)
@@ -1693,13 +1693,13 @@ __c30_signature
  .nbss              0x0828          0x2 build/default/debug/common.o
                     0x0828                  _ldrValue
 
-.text             0x00020a         0x68
- .text            0x00020a         0x4c build/default/debug/common.o
+.text             0x00020a         0x8e
+ .text            0x00020a         0x52 build/default/debug/common.o
                   0x00020a                  _setup
-                  0x000228                  _loop
- .text            0x000256         0x1c build/default/debug/main.o
-                  0x000256                  _alwaysSetup
-                  0x000268                  _main
+                  0x00022e                  _loop
+ .text            0x00025c         0x3c build/default/debug/main.o
+                  0x00025c                  _alwaysSetup
+                  0x00028e                  _main
 
-.dinit            0x000272          0x8
- .dinit           0x000272          0x8 data_init
+.dinit            0x000298          0x8
+ .dinit           0x000298          0x8 data_init

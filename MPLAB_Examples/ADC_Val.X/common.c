@@ -9,11 +9,16 @@
 
 
 #include "common.h"
+#include "../PIC24FJ256GA702_lib.X/PIC24FJ256GA702_lib.h"
 
 int ldrValue;                // Variable to store LDR ADC value
 
 void setup(void){
     // Insert your setup code here, to run once:
+    
+    // Enable ADC1 module
+    SET_BIT_ON_REG(PMD1, 0, 0);
+    
     ANSB = 0x0002;               // Set RB2/AN2 as analog pin
     AD1CON1 = 0x0070;            // SSRC = 111, internal counter ends sampling and starts conversion
     AD1CHS  = 0x0002;            // Select AN2 (RB2) as input channel
