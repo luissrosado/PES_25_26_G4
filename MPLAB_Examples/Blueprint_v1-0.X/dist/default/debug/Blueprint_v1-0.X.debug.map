@@ -4,13 +4,13 @@ Tool Name:
   c:\program files\microchip\xc16\v2.10\bin\bin\..\bin/elf-ld.exe
 
 Command:
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00008d18.00 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00008d18.01 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00008d18.02 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00008d18.03 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00008d18.04 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00008d18.05 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00008d18.06 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.00 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.01 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.02 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.03 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.04 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.05 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.06 \
   -p24FJ256GA702 \
   --mdfp=C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC24F-GA-GB_DFP/1.10.375/xc16 \
   -o \
@@ -27,7 +27,7 @@ Command:
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/dsPIC33F/gld \
   build/default/debug/main.o \
   build/default/debug/common.o \
-  ..\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a \
+  ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a \
   --local-stack \
   --defsym=__MPLAB_BUILD=1 \
   --defsym=__MPLAB_DEBUG=1 \
@@ -77,9 +77,9 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100               0x10a           0x18f  (399)
-.text                        0x20a                0x28            0x3c  (60)
+.text                        0x20a                0x48            0x6c  (108)
 
-                 Total "program" memory used (bytes):          0x1cb  (459) <1%
+                 Total "program" memory used (bytes):          0x1fb  (507) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x4000]
@@ -117,9 +117,9 @@ External Symbols in Program Memory (by address):
                   0x000152                  __data_init_da
                   0x000204                  __DefaultInterrupt
                   0x00020a                  _alwaysSetup
-                  0x00021c                  _main
-                  0x000226                  _setup
-                  0x00022c                  _loop
+                  0x00023c                  _main
+                  0x000246                  _setup
+                  0x00024c                  _loop
 
 External Symbols in Program Memory (by name):
 
@@ -129,9 +129,9 @@ External Symbols in Program Memory (by name):
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
                   0x00020a                  _alwaysSetup
-                  0x00022c                  _loop
-                  0x00021c                  _main
-                  0x000226                  _setup
+                  0x00024c                  _loop
+                  0x00023c                  _main
+                  0x000246                  _setup
 
 Memory Configuration
 
@@ -190,7 +190,7 @@ reserve_data_0x82a
  *fill*             0x082a         0x2600
 LOAD build/default/debug/main.o
 LOAD build/default/debug/common.o
-LOAD ..\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a
+LOAD ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a
                     0x0001                  __MPLAB_BUILD = 0x1
                     0x0001                  __MPLAB_DEBUG = 0x1
                     0x0001                  __DEBUG = 0x1
@@ -273,10 +273,10 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000        0x387
+.debug_info       0x000000        0x477
  *(.debug_info)
- .debug_info      0x000000        0x232 build/default/debug/main.o
- .debug_info      0x000232        0x155 build/default/debug/common.o
+ .debug_info      0x000000        0x322 build/default/debug/main.o
+ .debug_info      0x000322        0x155 build/default/debug/common.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000         0xa4
@@ -284,10 +284,10 @@ __FDEVOPT1
  .debug_abbrev    0x000000         0x70 build/default/debug/main.o
  .debug_abbrev    0x000070         0x34 build/default/debug/common.o
 
-.debug_line       0x000000        0x148
+.debug_line       0x000000        0x150
  *(.debug_line)
- .debug_line      0x000000        0x110 build/default/debug/main.o
- .debug_line      0x000110         0x38 build/default/debug/common.o
+ .debug_line      0x000000        0x118 build/default/debug/main.o
+ .debug_line      0x000118         0x38 build/default/debug/common.o
 
 .debug_frame      0x000000         0x90
  *(.debug_frame)
@@ -1674,10 +1674,10 @@ __c30_signature
  __c30_signature
                   0x000073          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_24.o)
 
-.text             0x00020a         0x28
- .text            0x00020a         0x1c build/default/debug/main.o
+.text             0x00020a         0x48
+ .text            0x00020a         0x3c build/default/debug/main.o
                   0x00020a                  _alwaysSetup
-                  0x00021c                  _main
- .text            0x000226          0xc build/default/debug/common.o
-                  0x000226                  _setup
-                  0x00022c                  _loop
+                  0x00023c                  _main
+ .text            0x000246          0xc build/default/debug/common.o
+                  0x000246                  _setup
+                  0x00024c                  _loop

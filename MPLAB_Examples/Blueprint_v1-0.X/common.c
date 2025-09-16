@@ -9,7 +9,7 @@
 
 
 #include "common.h"
-#include "../PIC24FJ256GA702_lib.X/PIC24FJ256GA702_lib.h"
+#include "../../PIC24_Lib/PIC24FJ256GA702_lib.X/PIC24FJ256GA702_lib.h"
 
 void setup(void){
     // Insert your setup code here, to run once:

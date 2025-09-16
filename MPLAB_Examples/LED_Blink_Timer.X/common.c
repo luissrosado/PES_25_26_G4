@@ -8,7 +8,7 @@
 #include <p24FJ256GA702.h>
 
 #include "common.h"
-#include "../PIC24FJ256GA702_lib.X/PIC24FJ256GA702_lib.h"
+#include "../../PIC24_Lib/PIC24FJ256GA702_lib.X/PIC24FJ256GA702_lib.h"
 
 void T1_ISR(void){
     uint16_t *IFS_vec[8] = {&IFS0, &IFS1, &IFS2, &IFS3, &IFS4, &IFS5, &IFS6, &IFS7};

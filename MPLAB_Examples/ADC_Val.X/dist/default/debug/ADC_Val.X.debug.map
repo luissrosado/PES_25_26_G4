@@ -4,13 +4,13 @@ Tool Name:
   c:\program files\microchip\xc16\v2.10\bin\bin\..\bin/elf-ld.exe
 
 Command:
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000021b0.00 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000021b0.01 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000021b0.02 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000021b0.03 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000021b0.04 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000021b0.05 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000021b0.06 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00003854.00 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00003854.01 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00003854.02 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00003854.03 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00003854.04 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00003854.05 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00003854.06 \
   -p24FJ256GA702 \
   --mdfp=C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC24F-GA-GB_DFP/1.10.375/xc16 \
   -o \
@@ -27,7 +27,7 @@ Command:
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/dsPIC33F/gld \
   build/default/debug/main.o \
   build/default/debug/common.o \
-  ..\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a \
+  ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a \
   --local-stack \
   --defsym=__MPLAB_BUILD=1 \
   --defsym=__MPLAB_DEBUG=1 \
@@ -200,7 +200,7 @@ reserve_data_0x82a
  *fill*             0x082a         0x2600
 LOAD build/default/debug/main.o
 LOAD build/default/debug/common.o
-LOAD ..\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a
+LOAD ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a
                     0x0001                  __MPLAB_BUILD = 0x1
                     0x0001                  __MPLAB_DEBUG = 0x1
                     0x0001                  __DEBUG = 0x1

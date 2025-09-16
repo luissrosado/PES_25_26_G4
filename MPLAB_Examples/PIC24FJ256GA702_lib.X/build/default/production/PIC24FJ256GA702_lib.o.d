@@ -1,4 +1,0 @@
-build/default/production/PIC24FJ256GA702_lib.o: PIC24FJ256GA702_lib.c \
- PIC24FJ256GA702_lib.h
-
-PIC24FJ256GA702_lib.h:

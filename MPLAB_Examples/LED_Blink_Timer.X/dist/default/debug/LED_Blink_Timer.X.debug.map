@@ -4,13 +4,13 @@ Tool Name:
   c:\program files\microchip\xc16\v2.10\bin\bin\..\bin/elf-ld.exe
 
 Command:
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp0000378c.00 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp0000378c.01 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp0000378c.02 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp0000378c.03 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp0000378c.04 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp0000378c.05 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp0000378c.06 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00005328.00 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00005328.01 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00005328.02 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00005328.03 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00005328.04 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00005328.05 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00005328.06 \
   -p24FJ256GA702 \
   --mdfp=C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC24F-GA-GB_DFP/1.10.375/xc16 \
   -o \
@@ -305,11 +305,11 @@ __FDEVOPT1
  .debug_abbrev    0x000070         0xef build/default/debug/common.o
  .debug_abbrev    0x00015f         0xc3 ..\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(PIC24FJ256GA702_lib.o)
 
-.debug_line       0x000000        0x3f1
+.debug_line       0x000000        0x3fe
  *(.debug_line)
  .debug_line      0x000000        0x118 build/default/debug/main.o
- .debug_line      0x000118        0x15c build/default/debug/common.o
- .debug_line      0x000274        0x17d ..\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(PIC24FJ256GA702_lib.o)
+ .debug_line      0x000118        0x169 build/default/debug/common.o
+ .debug_line      0x000281        0x17d ..\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(PIC24FJ256GA702_lib.o)
 
 .debug_frame      0x000000        0x186
  *(.debug_frame)

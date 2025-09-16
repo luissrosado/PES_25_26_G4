@@ -43,7 +43,7 @@
       <compileType>
         <linkerTool>
           <linkerLibItems>
-            <linkerLibFileItem>../PIC24FJ256GA702_lib.X/dist/default/production/PIC24FJ256GA702_lib.X.a</linkerLibFileItem>
+            <linkerLibFileItem>../../PIC24_Lib/PIC24FJ256GA702_lib.X/dist/default/production/PIC24FJ256GA702_lib.X.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
