@@ -93,36 +93,37 @@ void setupTimer1(uint16_t t1con, uint16_t pr1);
 
  */
 struct interrupt_t{
-    uint8_t ifs_iec_id;
+    volatile uint16_t* ifs_addr;
+    volatile uint16_t* iec_addr;
     uint8_t ifs_iec_bit;
-    uint8_t ipc_id;
+    volatile uint16_t* ipc_addr;
     uint8_t ipc_bit;
 };
-#define EXT0_INTERRUPT      ((struct interrupt_t){0, 0, 0, 2})
+#define EXT0_INTERRUPT      ((struct interrupt_t){&IFS0, &IEC0, 0, &IPC0, 2})
 #define EXT0_ISR            __attribute__((__interrupt__, auto_psv)) _INT0Interrupt
-#define T1_INTERRUPT        ((struct interrupt_t){0, 3, 0, 14})
+#define T1_INTERRUPT        ((struct interrupt_t){&IFS0, &IEC0, 3, &IPC0, 14})
 #define T1_ISR              __attribute__((__interrupt__, auto_psv)) _T1Interrupt
-#define DMA0_INTERRUPT      ((struct interrupt_t){0, 4, 1, 2})
+#define DMA0_INTERRUPT      ((struct interrupt_t){&IFS0, &IEC0, 4, &IPC1, 2})
 #define DMA0_ISR            __attribute__((__interrupt__, auto_psv)) _DMA0Interrupt
-#define T2_INTERRUPT        ((struct interrupt_t){0, 7, 1, 14})
+#define T2_INTERRUPT        ((struct interrupt_t){&IFS0, &IEC0, 7, &IPC1, 14})
 #define T2_ISR              __attribute__((__interrupt__, auto_psv)) _T2Interrupt
-#define T3_INTERRUPT        ((struct interrupt_t){0, 8, 2, 2})
+#define T3_INTERRUPT        ((struct interrupt_t){&IFS0, &IEC0, 8, &IPC2, 2})
 #define T3_ISR              __attribute__((__interrupt__, auto_psv)) _T3Interrupt
-#define SPI1_GEN_INTERRUPT  ((struct interrupt_t){0, 9, 2, 6})
+#define SPI1_GEN_INTERRUPT  ((struct interrupt_t){&IFS0, &IEC0, 9, &IPC2, 6})
 #define SPI1_GEN_ISR        __attribute__((__interrupt__, auto_psv)) _SPI1Interrupt
-#define SPI1_DONE_INTERRUPT ((struct interrupt_t){0, 10, 2, 10})
+#define SPI1_DONE_INTERRUPT ((struct interrupt_t){&IFS0, &IEC0, 10, &IPC2, 10})
 #define SPI1_DONE_ISR       __attribute__((__interrupt__, auto_psv)) _SPI1TXInterrupt
-#define U1_RX_INTERRUPT     ((struct interrupt_t){0, 11, 2, 14})
+#define U1_RX_INTERRUPT     ((struct interrupt_t){&IFS0, &IEC0, 11, &IPC2, 14})
 #define U1_RX_ISR           __attribute__((__interrupt__, auto_psv)) _U1RXInterrupt
-#define U1_TX_INTERRUPT     ((struct interrupt_t){0, 12, 3, 2})
+#define U1_TX_INTERRUPT     ((struct interrupt_t){&IFS0, &IEC0, 12, &IPC3, 2})
 #define U1_TX_ISR           __attribute__((__interrupt__, auto_psv)) _U1TXInterrupt
-#define ADC1_INTERRUPT      ((struct interrupt_t){0, 13, 3, 6})
+#define ADC1_INTERRUPT      ((struct interrupt_t){&IFS0, &IEC0, 13, &IPC3, 6})
 #define ADC1_TX_ISR         __attribute__((__interrupt__, auto_psv)) _ADC1Interrupt
-#define DMA1_INTERRUPT      ((struct interrupt_t){0, 14, 3, 10})
+#define DMA1_INTERRUPT      ((struct interrupt_t){&IFS0, &IEC0, 14, &IPC3, 10})
 #define DMA1_ISR            __attribute__((__interrupt__, auto_psv)) _DMA1Interrupt
-#define I2C1_S_INTERRUPT    ((struct interrupt_t){1, 0, 4, 2})
+#define I2C1_S_INTERRUPT    ((struct interrupt_t){&IFS1, &IEC1, 0, &IPC4, 2})
 #define I2C1_S_ISR          __attribute__((__interrupt__, auto_psv)) _SI2C1Interrupt
-#define I2C1_M_INTERRUPT    ((struct interrupt_t){1, 1, 4, 6})
+#define I2C1_M_INTERRUPT    ((struct interrupt_t){&IFS1, &IEC1, 1, &IPC4, 6})
 #define I2C1_M_ISR          __attribute__((__interrupt__, auto_psv)) _MI2C1Interrupt
 // PUT MORE HERE IF NEEDED
 void setupInterrupt(struct interrupt_t interrupt, uint8_t priority);

@@ -11,10 +11,9 @@
 #include "../../PIC24_Lib/PIC24FJ256GA702_lib.X/PIC24FJ256GA702_lib.h"
 
 void T1_ISR(void){
-    uint16_t *IFS_vec[8] = {&IFS0, &IFS1, &IFS2, &IFS3, &IFS4, &IFS5, &IFS6, &IFS7};
-    SET_BIT_ON_REG(*IFS_vec[T1_INTERRUPT.ifs_iec_id], T1_INTERRUPT.ifs_iec_bit, 0); // Set interrupt flag to 0
+    SET_BIT_ON_REG(*(T1_INTERRUPT.ifs_addr), T1_INTERRUPT.ifs_iec_bit, 0); // Set interrupt flag to 0
     
-    toggleDigitalPin(RB3);
+    toggleDigitalPin(RA0);
     
     return;
 }
@@ -31,8 +30,8 @@ void setup(void){
     setupTimer1(0x8030, 3000);
     
     // Setup Pin RB3 to a digital output
-    pinMode(RB3, OUTPUT);
-    digitalWrite(RB3, LOW);
+    pinMode(RA0, OUTPUT);
+    digitalWrite(RA0, LOW);
     
     
     // Interrupt flags
@@ -45,7 +44,8 @@ void setup(void){
 void loop(void){
     // Insert your loop code here, to run repeatedly:
     // Using idle, the internal clock keeps working and so does Timer1
-    Idle();
+    //Idle();
+    digitalWrite(RA0, HIGH);
     // Using sleep, the internal clock stops working and so does Timer1
     // Unless it is using an external clock
     //Sleep();
