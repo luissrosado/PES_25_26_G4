@@ -4,19 +4,19 @@ Tool Name:
   c:\program files\microchip\xc16\v2.10\bin\bin\..\bin/elf-ld.exe
 
 Command:
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00003854.00 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00003854.01 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00003854.02 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00003854.03 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00003854.04 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00003854.05 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00003854.06 \
+  -TC:\\Users\\guga2\\AppData\\Local\\Temp\\tmp000040e0.00 \
+  -TC:\\Users\\guga2\\AppData\\Local\\Temp\\tmp000040e0.01 \
+  -TC:\\Users\\guga2\\AppData\\Local\\Temp\\tmp000040e0.02 \
+  -TC:\\Users\\guga2\\AppData\\Local\\Temp\\tmp000040e0.03 \
+  -TC:\\Users\\guga2\\AppData\\Local\\Temp\\tmp000040e0.04 \
+  -TC:\\Users\\guga2\\AppData\\Local\\Temp\\tmp000040e0.05 \
+  -TC:\\Users\\guga2\\AppData\\Local\\Temp\\tmp000040e0.06 \
   -p24FJ256GA702 \
-  --mdfp=C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC24F-GA-GB_DFP/1.10.375/xc16 \
+  --mdfp=C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC24F-GA-GB_DFP/1.9.336/xc16 \
   -o \
   dist/default/debug/ADC_Val.X.debug.elf \
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/.. \
-  -LC:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC24F-GA-GB_DFP/1.10.375/xc16/bin/../support/PIC24F/gld \
+  -LC:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC24F-GA-GB_DFP/1.9.336/xc16/bin/../support/PIC24F/gld \
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../lib \
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/PIC24E/gld \
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/PIC24F/gld \
@@ -27,6 +27,7 @@ Command:
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/dsPIC33F/gld \
   build/default/debug/main.o \
   build/default/debug/common.o \
+  build/default/debug/ldr.o \
   ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a \
   --local-stack \
   --defsym=__MPLAB_BUILD=1 \
@@ -77,10 +78,10 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100               0x10a           0x18f  (399)
-.text                        0x20a                0x8e            0xd5  (213)
-.dinit                       0x298                 0x8             0xc  (12)
+.text                        0x20a                0xa8            0xfc  (252)
+.dinit                       0x2b2                0x12            0x1b  (27)
 
-                 Total "program" memory used (bytes):          0x270  (624) <1%
+                 Total "program" memory used (bytes):          0x2a6  (678) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x4000]
@@ -95,8 +96,9 @@ reserve_data_0x822           0x822                 0x2             0x2  (2)
 reserve_data_0x824           0x824                 0x4             0x4  (4)
 .nbss                        0x828                   0             0x2  (2)
 reserve_data_0x82a           0x82a                0x26            0x26  (38)
+.data                        0x850                   0             0x6  (6)
 
-                 Total "data" memory used (bytes):           0x50  (80) <1%
+                 Total "data" memory used (bytes):           0x56  (86) <1%
 
 
 Dynamic Memory Usage
@@ -104,9 +106,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x850                              0x3fb0  (16304)
+stack                        0x856                              0x3faa  (16298)
 
-                 Maximum dynamic memory (bytes):         0x3fb0  (16304)
+                 Maximum dynamic memory (bytes):         0x3faa  (16298)
 
 Info: Project is using a large data memory model when small data memory model is sufficient.
 
@@ -114,9 +116,11 @@ Info: Project is using a large data memory model when small data memory model is
 External Symbols in Data Memory (by address):
 
                     0x0828                  _ldrValue
+                    0x0850                  _LDR
 
 External Symbols in Data Memory (by name):
 
+                    0x0850                  _LDR
                     0x0828                  _ldrValue
 
 External Symbols in Program Memory (by address):
@@ -126,22 +130,28 @@ External Symbols in Program Memory (by address):
                   0x000152                  __data_init
                   0x000152                  __data_init_da
                   0x000204                  __DefaultInterrupt
-                  0x00020a                  _setup
-                  0x00022e                  _loop
+                  0x00020a                  _ADC_setup
+                  0x000228                  _ADC_read
+                  0x000248                  _ADC_check
                   0x00025c                  _alwaysSetup
                   0x00028e                  _main
+                  0x000298                  _setup
+                  0x0002a6                  _loop
 
 External Symbols in Program Memory (by name):
 
+                  0x000248                  _ADC_check
+                  0x000228                  _ADC_read
+                  0x00020a                  _ADC_setup
                   0x000204                  __DefaultInterrupt
                   0x000152                  __data_init
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
                   0x00025c                  _alwaysSetup
-                  0x00022e                  _loop
+                  0x0002a6                  _loop
                   0x00028e                  _main
-                  0x00020a                  _setup
+                  0x000298                  _setup
 
 Memory Configuration
 
@@ -200,6 +210,7 @@ reserve_data_0x82a
  *fill*             0x082a         0x2600
 LOAD build/default/debug/main.o
 LOAD build/default/debug/common.o
+LOAD build/default/debug/ldr.o
 LOAD ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a
                     0x0001                  __MPLAB_BUILD = 0x1
                     0x0001                  __MPLAB_DEBUG = 0x1
@@ -283,30 +294,34 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000        0x8db
+.debug_info       0x000000        0xb26
  *(.debug_info)
- .debug_info      0x000000        0x31b build/default/debug/main.o
- .debug_info      0x00031b        0x5c0 build/default/debug/common.o
+ .debug_info      0x000000        0x331 build/default/debug/main.o
+ .debug_info      0x000331        0x1ae build/default/debug/common.o
+ .debug_info      0x0004df        0x647 build/default/debug/ldr.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x17b
+.debug_abbrev     0x000000        0x238
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x70 build/default/debug/main.o
- .debug_abbrev    0x000070        0x10b build/default/debug/common.o
+ .debug_abbrev    0x000070         0x6a build/default/debug/common.o
+ .debug_abbrev    0x0000da        0x15e build/default/debug/ldr.o
 
-.debug_line       0x000000        0x231
+.debug_line       0x000000        0x343
  *(.debug_line)
- .debug_line      0x000000        0x118 build/default/debug/main.o
- .debug_line      0x000118        0x119 build/default/debug/common.o
+ .debug_line      0x000000        0x117 build/default/debug/main.o
+ .debug_line      0x000117        0x10d build/default/debug/common.o
+ .debug_line      0x000224        0x11f build/default/debug/ldr.o
 
-.debug_frame      0x000000         0x90
+.debug_frame      0x000000         0xf2
  *(.debug_frame)
  .debug_frame     0x000000         0x48 build/default/debug/main.o
  .debug_frame     0x000048         0x48 build/default/debug/common.o
+ .debug_frame     0x000090         0x62 build/default/debug/ldr.o
 
-.debug_str        0x000000         0x27
+.debug_str        0x000000         0x1e
  *(.debug_str)
- .debug_str       0x000000         0x27 build/default/debug/common.o
+ .debug_str       0x000000         0x1e build/default/debug/ldr.o
 
 .debug_loc
  *(.debug_loc)
@@ -315,22 +330,26 @@ __FDEVOPT1
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000         0x5d
+                  0x000000         0xa0
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x2b build/default/debug/main.o
  .debug_pubnames
                   0x00002b         0x32 build/default/debug/common.o
+ .debug_pubnames
+                  0x00005d         0x43 build/default/debug/ldr.o
 
 .debug_ranges
  *(.debug_ranges)
 
-.debug_aranges    0x000000         0x30
+.debug_aranges    0x000000         0x48
  *(.debug_aranges)
  .debug_aranges
                   0x000000         0x18 build/default/debug/main.o
  .debug_aranges
                   0x000018         0x18 build/default/debug/common.o
+ .debug_aranges
+                  0x000030         0x18 build/default/debug/ldr.o
                     0x0000                  WREG0 = 0x0
                     0x0000                  _WREG0 = 0x0
                     0x0002                  WREG1 = 0x2
@@ -1658,6 +1677,12 @@ __FDEVOPT1
                     0x023e                  _OC2 = 0x23e
                     0x0248                  OC3 = 0x248
                     0x0248                  _OC3 = 0x248
+                    0x03fe                  SPI1 = 0x3fe
+                    0x03fe                  _SPI1 = 0x3fe
+                    0x041a                  SPI2 = 0x41a
+                    0x041a                  _SPI2 = 0x41a
+                    0x0436                  SPI3 = 0x436
+                    0x0436                  _SPI3 = 0x436
                     0x0398                  UART1 = 0x398
                     0x0398                  _UART1 = 0x398
                     0x03ae                  UART2 = 0x3ae
@@ -1672,34 +1697,46 @@ LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x000030         0x7e
+                  0x000048         0xb1
  .debug_pubtypes
-                  0x000030         0x1f build/default/debug/main.o
+                  0x000048         0x1f build/default/debug/main.o
  .debug_pubtypes
-                  0x00004f         0x5f build/default/debug/common.o
+                  0x000067         0x1f build/default/debug/common.o
+ .debug_pubtypes
+                  0x000086         0x73 build/default/debug/ldr.o
 
 __c30_signature
-                  0x0000ae         0x18
+                  0x0000f9         0x1e
  __c30_signature
-                  0x0000ae          0x6 build/default/debug/main.o
+                  0x0000f9          0x6 build/default/debug/main.o
  __c30_signature
-                  0x0000b4          0x6 build/default/debug/common.o
+                  0x0000ff          0x6 build/default/debug/common.o
  __c30_signature
-                  0x0000ba          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
+                  0x000105          0x6 build/default/debug/ldr.o
  __c30_signature
-                  0x0000c0          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_24.o)
+                  0x00010b          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
+ __c30_signature
+                  0x000111          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_24.o)
 
 .nbss               0x0828          0x2
  .nbss              0x0828          0x2 build/default/debug/common.o
                     0x0828                  _ldrValue
 
-.text             0x00020a         0x8e
- .text            0x00020a         0x52 build/default/debug/common.o
-                  0x00020a                  _setup
-                  0x00022e                  _loop
+.data               0x0850          0x6
+ .data              0x0850          0x6 build/default/debug/ldr.o
+                    0x0850                  _LDR
+
+.text             0x00020a         0xa8
+ .text            0x00020a         0x52 build/default/debug/ldr.o
+                  0x00020a                  _ADC_setup
+                  0x000228                  _ADC_read
+                  0x000248                  _ADC_check
  .text            0x00025c         0x3c build/default/debug/main.o
                   0x00025c                  _alwaysSetup
                   0x00028e                  _main
+ .text            0x000298         0x1a build/default/debug/common.o
+                  0x000298                  _setup
+                  0x0002a6                  _loop
 
-.dinit            0x000298          0x8
- .dinit           0x000298          0x8 data_init
+.dinit            0x0002b2         0x12
+ .dinit           0x0002b2         0x12 data_init
