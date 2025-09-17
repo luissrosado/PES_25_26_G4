@@ -44,8 +44,7 @@ void setup(void){
 void loop(void){
     // Insert your loop code here, to run repeatedly:
     // Using idle, the internal clock keeps working and so does Timer1
-    //Idle();
-    digitalWrite(RA0, HIGH);
+    Idle();
     // Using sleep, the internal clock stops working and so does Timer1
     // Unless it is using an external clock
     //Sleep();

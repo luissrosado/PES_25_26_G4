@@ -71,11 +71,10 @@ Default Scalar Model: Small
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
-.text                        0x100               0x1b4           0x28e  (654)
-.const                       0x2b4                0x10            0x18  (24)
-.text                        0x2c4               0x334           0x4ce  (1230)
+.text                        0x100               0x1aa           0x27f  (639)
+.text                        0x2aa               0x322           0x4b3  (1203)
 
-                 Total "program" memory used (bytes):          0x774  (1908) <1%
+                 Total "program" memory used (bytes):          0x732  (1842) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x4000]
@@ -105,36 +104,36 @@ External Symbols in Program Memory (by address):
                   0x000152                  __data_init
                   0x000152                  __data_init_da
                   0x000204                  __T1Interrupt
-                  0x0002ae                  __DefaultInterrupt
-                  0x0002c4                  _pinMode
-                  0x00035a                  _digitalWrite
-                  0x0003b4                  _toggleDigitalPin
-                  0x000428                  _setupTimer1
-                  0x000442                  _setupInterrupt
-                  0x0004fe                  _setupSOsc
-                  0x000522                  _setup
-                  0x0005a2                  _loop
-                  0x0005bc                  _alwaysSetup
-                  0x0005ee                  _main
+                  0x0002a4                  __DefaultInterrupt
+                  0x0002aa                  _pinMode
+                  0x000340                  _digitalWrite
+                  0x00039a                  _toggleDigitalPin
+                  0x00040e                  _setupTimer1
+                  0x000428                  _setupInterrupt
+                  0x0004e4                  _setupSOsc
+                  0x000508                  _setup
+                  0x000588                  _loop
+                  0x000590                  _alwaysSetup
+                  0x0005c2                  _main
 
 External Symbols in Program Memory (by name):
 
-                  0x0002ae                  __DefaultInterrupt
+                  0x0002a4                  __DefaultInterrupt
                   0x000204                  __T1Interrupt
                   0x000152                  __data_init
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x0005bc                  _alwaysSetup
-                  0x00035a                  _digitalWrite
-                  0x0005a2                  _loop
-                  0x0005ee                  _main
-                  0x0002c4                  _pinMode
-                  0x000522                  _setup
-                  0x000442                  _setupInterrupt
-                  0x0004fe                  _setupSOsc
-                  0x000428                  _setupTimer1
-                  0x0003b4                  _toggleDigitalPin
+                  0x000590                  _alwaysSetup
+                  0x000340                  _digitalWrite
+                  0x000588                  _loop
+                  0x0005c2                  _main
+                  0x0002aa                  _pinMode
+                  0x000508                  _setup
+                  0x000428                  _setupInterrupt
+                  0x0004e4                  _setupSOsc
+                  0x00040e                  _setupTimer1
+                  0x00039a                  _toggleDigitalPin
 
 Memory Configuration
 
@@ -183,7 +182,7 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libfx-elf.a
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
 
-.text             0x000100        0x1b4
+.text             0x000100        0x1aa
  *(.init)
  .init            0x000100         0x4c c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
                   0x000100                  __resetPRI
@@ -195,18 +194,18 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libfx-elf.a
  *(.user_init)
  *(.handle)
  *(.isr*)
- .isr.text        0x000204         0xaa build/default/production/common.o
+ .isr.text        0x000204         0xa0 build/default/production/common.o
                   0x000204                  __T1Interrupt
- .isr             0x0002ae          0x4 default_isr
-                  0x0002ae                  __DefaultInterrupt
+ .isr             0x0002a4          0x4 default_isr
+                  0x0002a4                  __DefaultInterrupt
  *(.libc)
  *(.libm)
  *(.libdsp)
  *(.lib*)
  .libpic30_crt_start_mode
-                  0x0002b2          0x2 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normalda.Meo)
-                  0x0002b2                  __crt_start_mode
-                  0x0002b2                  __crt_start_mode_normal
+                  0x0002a8          0x2 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normalda.Meo)
+                  0x0002a8                  __crt_start_mode
+                  0x0002a8                  __crt_start_mode_normal
 
 usercode
  *(usercode)
@@ -241,27 +240,27 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000        0xeb7
+.debug_info       0x000000        0xdbe
  *(.debug_info)
  .debug_info      0x000000        0x323 build/default/production/main.o
- .debug_info      0x000323        0x49c build/default/production/common.o
- .debug_info      0x0007bf        0x2fb ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
- .debug_info      0x000aba        0x3fd ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
+ .debug_info      0x000323        0x3a3 build/default/production/common.o
+ .debug_info      0x0006c6        0x2fb ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
+ .debug_info      0x0009c1        0x3fd ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x278
+.debug_abbrev     0x000000        0x240
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x70 build/default/production/main.o
- .debug_abbrev    0x000070         0xef build/default/production/common.o
- .debug_abbrev    0x00015f         0x88 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
- .debug_abbrev    0x0001e7         0x91 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
+ .debug_abbrev    0x000070         0xb7 build/default/production/common.o
+ .debug_abbrev    0x000127         0x88 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
+ .debug_abbrev    0x0001af         0x91 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
 
-.debug_line       0x000000        0x4c5
+.debug_line       0x000000        0x4c3
  *(.debug_line)
  .debug_line      0x000000        0x117 build/default/production/main.o
- .debug_line      0x000117        0x177 build/default/production/common.o
- .debug_line      0x00028e        0x113 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
- .debug_line      0x0003a1        0x124 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
+ .debug_line      0x000117        0x175 build/default/production/common.o
+ .debug_line      0x00028c        0x113 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
+ .debug_line      0x00039f        0x124 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
 
 .debug_frame      0x000000        0x19a
  *(.debug_frame)
@@ -1681,21 +1680,18 @@ __c30_signature
  .ivt._T1Interrupt
                   0x00001a          0x2 build/default/production/common.o
 
-.const              0x82b4         0x10 load address 0x0002b4  
- .const             0x82b4         0x10 build/default/production/common.o
-
-.text             0x0002c4        0x334
- .text            0x0002c4        0x164 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
-                  0x0002c4                  _pinMode
-                  0x00035a                  _digitalWrite
-                  0x0003b4                  _toggleDigitalPin
- .text            0x000428         0xfa ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
-                  0x000428                  _setupTimer1
-                  0x000442                  _setupInterrupt
-                  0x0004fe                  _setupSOsc
- .text            0x000522         0x9a build/default/production/common.o
-                  0x000522                  _setup
-                  0x0005a2                  _loop
- .text            0x0005bc         0x3c build/default/production/main.o
-                  0x0005bc                  _alwaysSetup
-                  0x0005ee                  _main
+.text             0x0002aa        0x322
+ .text            0x0002aa        0x164 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
+                  0x0002aa                  _pinMode
+                  0x000340                  _digitalWrite
+                  0x00039a                  _toggleDigitalPin
+ .text            0x00040e         0xfa ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
+                  0x00040e                  _setupTimer1
+                  0x000428                  _setupInterrupt
+                  0x0004e4                  _setupSOsc
+ .text            0x000508         0x88 build/default/production/common.o
+                  0x000508                  _setup
+                  0x000588                  _loop
+ .text            0x000590         0x3c build/default/production/main.o
+                  0x000590                  _alwaysSetup
+                  0x0005c2                  _main
