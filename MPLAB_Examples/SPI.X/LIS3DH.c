@@ -9,8 +9,8 @@
 #include "LIS3DH.h"
 #include "spi.h"
 
-int8_t WHO_AM_I(){
-    int8_t data= WHO_AM_I_reg;
+int8_t who_am_i(){
+    int8_t *data= 0x0F;
     int16_t tx;
     spi1_write(data);
     spi1_read(&tx);

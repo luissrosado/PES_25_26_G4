@@ -32,15 +32,16 @@
 #define	LIS3DH_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
-
+#include <stdint.h>
+#include <stdio.h>
 // TODO Insert appropriate #include <>
 #define WHO_AM_I_reg 0x0F
 #define WHO_AM_I 0x33
-
+#define int8_t __NEED_int8_t
 // TODO Insert C++ class definitions if appropriate
 
 // TODO Insert declarations
-int8_t WHO_AM_I();
+int8_t who_am_i();
 // Comment a function and leverage automatic documentation with slash star star
 /**
     <p><b>Function prototype:</b></p>
