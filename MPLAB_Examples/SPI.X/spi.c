@@ -37,3 +37,7 @@ void spi1_write(int16_t *data){
     SPI1BUFL = &data;
     return;
 }
+void spi1_read(int16_t *data){
+    data = SPI1BUFL;
+    return;
+}

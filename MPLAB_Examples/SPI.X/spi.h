@@ -42,11 +42,10 @@
 void spi_config_master();
 void spi1_enable();
 void spi1_disable();
-<<<<<<< Updated upstream
 void spi1_write(int16_t *data);
-=======
-void spi1_write();
->>>>>>> Stashed changes
+void spi1_read(int16_t *data);
+
+
 
 // Comment a function and leverage automatic documentation with slash star star
 /**
