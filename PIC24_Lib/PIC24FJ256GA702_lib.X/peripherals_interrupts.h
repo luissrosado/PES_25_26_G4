@@ -167,6 +167,22 @@ void setupSOsc(
     uint16_t oscfdiv
 );
 
+/**
+    <p><b>Function prototype:</b></p>
+ * void setupSPI1Slave(uint16_t SCLK_Pin, uint16_t CS_Pin, uint16_t MISO_Pin, uint16_t MOSI_Pin)
+
+    <p><b>Description:</b></p>
+ * Sets up SPI1 as a Slave in the following pins
+ * SCLK_Pin, CS_Pin, MISO_Pin, MOSI_Pin
+
+    <p><b>Parameters:</b></p>
+ * SCLK_Pin  - Select SCLK Pin
+ * CS_Pin    - Select CS Pin
+ * MISO_Pin  - Select MISO Pin
+ * MOSI_Pin  - Select MOSI Pin
+ */
+void setupSPI1Slave(uint16_t SCLK_Pin, uint16_t CS_Pin, uint16_t MISO_Pin, uint16_t MOSI_Pin);
+
 #ifdef	__cplusplus
 extern "C" {
 #endif /* __cplusplus */
