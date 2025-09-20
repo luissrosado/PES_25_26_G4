@@ -28,29 +28,42 @@ void setupSOsc(
 
 void SPI1_Init(void)
 {
-    SPI1CON1Lbits.SPIEN = 0;  
+    uint16_t dummy;
 
-    // Clear interrupt flag and disable SPI interrupt
-    IFS0bits.SPI1IF = 0;   
-    IEC0bits.SPI1IE = 0;   
+    // Disable SPI module before configuration
+    SPI1CON1Lbits.SPIEN = 0;
+
+    // Disable and clear interrupt flag (not using interrupts here)
+    IFS0bits.SPI1IF = 0;
+    IEC0bits.SPI1IE = 0;
+
+    // Clear receive buffer (drain any unread data)
+    while (SPI1STATLbits.SPIRBF)
+        dummy = SPI1BUFL;
+
+    // Clear overflow flag
+    SPI1STATLbits.SPIROV = 0;
 
     // Configure SPI1CON1 register
-    SPI1CON1bits.DISSCK = 0;    // Enable generation of SCK
-    SPI1CON1bits.DISSDO = 0;    // Enable generation of SDO
-    SPI1CON1bits.MODE16 = 1;    // 8-bit mode
+    SPI1CON1bits.DISSCK = 0;    // Enable internal SCK generation
+    SPI1CON1bits.DISSDO = 0;    // Enable SDO pin
+    SPI1CON1bits.MODE16 = 1;    // 16-bit mode (not 8-bit!)
     SPI1CON1bits.SMP = 0;       // Sample at middle of data output time
-    SPI1CON1bits.CKP = 0;       // Clock idle state low
-    SPI1CON1bits.CKE = 1;       // Data changes on falling edge of SCK
-    //SPI1CON1bits.SPRE = 4;      // Secondary prescaler 4:1
-    //SPI1CON1bits.PPRE = 2;      // Primary prescaler 4:1 -> F_SCK = 1 MHz (if FCY = 16 MHz)
-    SPI1CON1bits.MSTEN = 1;     // Enable master mode
+    SPI1CON1bits.CKP = 0;       // Idle state for clock is low
+    SPI1CON1bits.CKE = 1;       // Transmit data on rising edge, change on falling edge
+    SPI1CON1bits.MSTEN = 1;     // Master mode enabled
 
-    // Fully disable frame mode
+    // Disable frame mode completely
     SPI1CON2 = 0;
-    SPI1BRGL = 3;              // 16MHz / 8 = 2 MHz
 
-    SPI1CON1Lbits.SPIEN = 1;  // Enable SPI
+    // Set baud rate (F_SCK = FCY / (2 * (SPI1BRGL+1)))
+    // With FCY=16 MHz and BRGL=3 -> F_SCK ? 2 MHz
+    SPI1BRGL = 3;
+
+    // Enable SPI module
+    SPI1CON1Lbits.SPIEN = 1;
 }
+
 
 /**s
  * @brief Send and receive 16-bit data over SPI1
@@ -81,7 +94,7 @@ int main(void)
         response = SPI1_Transfer16(command);  // Send command and receive response
 
         // Show message on LCD
-        printf("\fOLEEEEEEEE");
+        printf("\fFUNCIONAAAAA MALUCO");
 
         // Check for slave acknowledgment
         if(response == 0x00AA)
