@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project>
-  <executable name="dist/default/debug/pic24fj1024gb610_pim.x.debug.elf">
+  <executable name="dist/default/production/pic24fj1024gb610_pim.x.production.elf">
     <memory name="data">
       <units>bytes</units>
       <length>32768</length>
-      <used>280</used>
-      <free>32488</free>
+      <used>202</used>
+      <free>32566</free>
     </memory>
     <memory name="program">
       <units>bytes</units>
       <length>1056000</length>
-      <used>9786</used>
-      <free>1046214</free>
+      <used>9777</used>
+      <free>1046223</free>
     </memory>
   </executable>
 </project>

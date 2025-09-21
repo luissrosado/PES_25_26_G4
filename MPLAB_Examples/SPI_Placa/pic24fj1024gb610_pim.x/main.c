@@ -2,101 +2,115 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define FCY 16000000UL     // System frequency
-#include <libpic30.h>      // For __delay_ms()
-
+#define FCY 16000000UL
+#include <libpic30.h>      // Para __delay_ms()
 #include "bsp/lcd.h"       // LCD driver
 
-/**
- * @brief Initialize SPI1 as Master in 16-bit mode
- */
-void setupSOsc(
-    uint16_t osccon,
-    uint16_t osctun,
-    uint16_t clkdiv,
-    uint16_t oscdiv,
-    uint16_t oscfdiv
-){
-    OSCCON  = osccon;
-    OSCTUN  = osctun;
-    CLKDIV  = clkdiv;
-    OSCDIV  = oscdiv;
-    OSCFDIV = oscfdiv;
-    
-    return;
+//---------------------------
+// Pino CS
+//---------------------------
+#define CS_LAT _LATB11
+#define CS_TRIS _TRISB11
+
+//---------------------------
+// Controle CS
+//---------------------------
+#define CS_LOW()  (CS_LAT = 0)
+#define CS_HIGH() (CS_LAT = 1)
+
+//---------------------------
+// Inicializa PPS e direção dos pinos SPI1
+//---------------------------
+void SPI1_PPS_Init(void)
+{
+    // Desbloqueia PPS
+    __builtin_write_OSCCONL(OSCCON & 0xBF);
+
+    // Mapear pinos SPI1
+    RPOR4bits.RP8R   = 0x0007;  // RP8 -> SDO1
+    RPINR20bits.SDI1R = 0x0009; // RP9 -> SDI1
+    RPOR5bits.RP10R  = 0x0008;  // RP10 -> SCK1OUT
+
+    // Bloqueia PPS
+    __builtin_write_OSCCONL(OSCCON | 0x40);
+
+    // Configura direção
+    _TRISB8 = 0;   // SDO1 saída
+    _TRISB9 = 1;   // SDI1 entrada
+    _TRISB10 = 0;  // SCK1 saída
+    CS_TRIS  = 0;  // CS saída
+    CS_HIGH();     // CS inativo
 }
 
+//---------------------------
+// Inicializa SPI1 Master
+//---------------------------
 void SPI1_Init(void)
 {
     uint16_t dummy;
 
-    // Disable SPI module before configuration
-    SPI1CON1Lbits.SPIEN = 0;
+    SPI1CON1Lbits.SPIEN = 0;  // Desativa SPI antes de configurar
 
-    // Disable and clear interrupt flag (not using interrupts here)
     IFS0bits.SPI1IF = 0;
     IEC0bits.SPI1IE = 0;
 
-    // Clear receive buffer (drain any unread data)
-    while (SPI1STATLbits.SPIRBF)
-        dummy = SPI1BUFL;
+    // Limpa buffer
+    while(SPI1STATLbits.SPIRBF) dummy = SPI1BUFL;
+    SPI1STATLbits.SPIROV = 0;  // limpa overflow
 
-    // Clear overflow flag
-    SPI1STATLbits.SPIROV = 0;
+    // Configura SPI1
+    SPI1CON1bits.DISSCK = 0;  // clock interno
+    SPI1CON1bits.DISSDO = 0;  // SDO ativo
+    SPI1CON1bits.MODE16 = 1;  // 16 bits
+    SPI1CON1bits.SMP = 0;     // sample no meio
+    SPI1CON1bits.CKP = 0;     // idle low
+    SPI1CON1bits.CKE = 1;     // transição na borda de subida
+    SPI1CON1bits.MSTEN = 1;   // master mode
 
-    // Configure SPI1CON1 register
-    SPI1CON1bits.DISSCK = 0;    // Enable internal SCK generation
-    SPI1CON1bits.DISSDO = 0;    // Enable SDO pin
-    SPI1CON1bits.MODE16 = 1;    // 16-bit mode (not 8-bit!)
-    SPI1CON1bits.SMP = 0;       // Sample at middle of data output time
-    SPI1CON1bits.CKP = 0;       // Idle state for clock is low
-    SPI1CON1bits.CKE = 1;       // Transmit data on rising edge, change on falling edge
-    SPI1CON1bits.MSTEN = 1;     // Master mode enabled
+    SPI1CON2 = 0;              // frame mode desativado
+    SPI1BRGL = 3;              // F_SCK ? 2 MHz
 
-    // Disable frame mode completely
-    SPI1CON2 = 0;
-
-    // Set baud rate (F_SCK = FCY / (2 * (SPI1BRGL+1)))
-    // With FCY=16 MHz and BRGL=3 -> F_SCK ? 2 MHz
-    SPI1BRGL = 3;
-
-    // Enable SPI module
-    SPI1CON1Lbits.SPIEN = 1;
+    SPI1CON1Lbits.SPIEN = 1;   // habilita SPI
 }
 
-
-/**s
- * @brief Send and receive 16-bit data over SPI1
- */
+//---------------------------
+// Transferência SPI 16 bits
+//---------------------------
 uint16_t SPI1_Transfer16(uint16_t data)
 {
-    SPI1BUFL = data;                      // Load data into buffer
-    while(!SPI1STATLbits.SPIRBF);         // Wait until receive complete
-    return SPI1BUFL;                      // Read received 16-bit data
+    SPI1BUFL = data;
+    while(!SPI1STATLbits.SPIRBF); // espera terminar
+    return SPI1BUFL;
 }
 
-/**
- * @brief Main program
- */
+//---------------------------
+// Programa principal
+//---------------------------
 int main(void)
 {
     uint16_t command = 0x0055;
     uint16_t response;
-    
-    setupSOsc(0x0000, 0x0000, 0x0000, 0x0000, 0x0000);
 
-    // Initialize SPI and LCD
+    // Inicializa PPS e pinos SPI1
+    SPI1_PPS_Init();
+
+    // Inicializa SPI1
     SPI1_Init();
+
+    // Inicializa LCD
     LCD_Initialize();
 
     while(1)
     {
-        response = SPI1_Transfer16(command);  // Send command and receive response
+        // Ativa CS
+        CS_LOW();
+        response = SPI1_Transfer16(command);
+        CS_HIGH();  // Desativa CS
 
-        // Show message on LCD
-        printf("\fFUNCIONAAAAA MALUCO");
+        // Mostra mensagem no LCD
+        printf("\fAI ZE DA MANGA");
 
-        // Check for slave acknowledgment
+        // Verifica resposta do slave
         if(response == 0x00AA)
         {
             printf("\nSLAVE OK");
