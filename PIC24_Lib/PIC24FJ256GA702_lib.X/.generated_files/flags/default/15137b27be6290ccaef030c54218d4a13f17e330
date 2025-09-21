@@ -1,0 +1,1 @@
+ -c -mcpu=$(MP_PROCESSOR_OPTION)      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off   C:\Users\guga2\Documents\GitHub\PES_25_26_G4\PIC24_Lib\PIC24FJ256GA702_lib.X\GPIO.c
