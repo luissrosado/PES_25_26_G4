@@ -53,3 +53,36 @@ void setupSOsc(
     
     return;
 }
+
+void setupSPI1Slave(uint16_t SCLK_Pin, uint16_t CS_Pin, uint16_t MISO_Pin, uint16_t MOSI_Pin){
+    // Enable the SPI1 Module
+    SET_BIT_ON_REG(PMD1, 3, 0);
+    
+    
+    RPINR20bits.SDI1R = MISO_Pin;  // SDI1 input (MISO)
+    RPOR7bits.RP14R = 0b00111;     // SDO1 output (MOSI)
+    RPINR20bits.SCK1R = SCLK_Pin;  // SCK1 input
+    RPINR21bits.SS1R  = CS_Pin;    // SS1 input
+    
+    SPI1CON1Lbits.SPIEN = 0;  // Disable SPI1 before config
+    
+    // Setup as 16-bit communication, 16-bit FIFO
+    SPI1CON1Hbits.AUDEN  = 0;
+    SPI1CON1Lbits.MODE32 = 0;
+    SPI1CON1Lbits.MODE16 = 1;
+
+    SPI1CON1Lbits.MSTEN = 0;  // 0 = Slave mode
+    SPI1CON1Lbits.SMP   = 0;  // Input data sampled in the middle
+    SPI1CON1Lbits.CKE   = 1;  // Data changes on transition from active to idle clock state
+    SPI1CON1Lbits.CKP   = 0;  // Idle clock is low
+    SPI1CON1Lbits.SSEN  = 1;  // Enable Slave Select pin
+
+    SPI1STATLbits.SPIROV = 0; // Clear overflow
+    SPI1CON1Lbits.SPIEN  = 1; // Enable SPI1
+
+    // === Configure SPI Interrupt ===
+    IFS0bits.SPI1IF = 0; // Clear interrupt flag
+    IEC0bits.SPI1IE = 1; // Enable SPI interrupt
+    
+    return;
+}
