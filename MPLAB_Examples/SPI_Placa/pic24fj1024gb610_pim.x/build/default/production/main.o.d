@@ -1,3 +1,3 @@
-build/default/production/main.o: main.c bsp/lcd.h
+build/default/production/main.o: main.c config.h
 
-bsp/lcd.h:
+config.h:

@@ -1,3 +1,3 @@
-build/default/debug/main.o: main.c bsp/lcd.h
+build/default/debug/main.o: main.c config.h
 
-bsp/lcd.h:
+config.h:
