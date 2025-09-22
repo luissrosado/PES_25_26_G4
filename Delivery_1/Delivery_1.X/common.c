@@ -47,7 +47,7 @@ void setup(void){
     
     // Setup Pin RB3 to a digital output
     pinMode(RA0, OUTPUT);
-    digitalWrite(RA0, LOW);
+    digitalWrite(RA0, HIGH);
     
     pinMode(AN2, INPUT);
     setupADC(
