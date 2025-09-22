@@ -11,7 +11,7 @@
 #include "../../PIC24_Lib/PIC24FJ256GA702_lib.X/PIC24FJ256GA702_lib.h"
 
 void T1_ISR(void){
-    SET_BIT_ON_REG(*(T1_INTERRUPT.ifs_addr), T1_INTERRUPT.ifs_iec_bit, 0); // Set interrupt flag to 0
+    IFS0bits.T1IF = 0;
     
     toggleDigitalPin(RA0);
     
@@ -20,7 +20,7 @@ void T1_ISR(void){
 
 void setup(void){
     // Insert your setup code here, to run once:
-    setupSOsc(
+    setupOsc(
         0x0000,
         0x0000,
         0x0000,

@@ -89,58 +89,26 @@ MP_LINKER_FILE_OPTION=,--script=p24FJ256GA702.gld
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 ${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/7a71a9f5e418e9e14429d7ed9d6be8a501eb95dc .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-=======
-${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/28faaa191f80f845c23543b01c12a6b2eeab60ea .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
->>>>>>> Stashed changes
-=======
-${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/28faaa191f80f845c23543b01c12a6b2eeab60ea .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
->>>>>>> Stashed changes
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  main.c  -o ${OBJECTDIR}/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/main.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off   
 	
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 ${OBJECTDIR}/common.o: common.c  .generated_files/flags/default/8df735d69462b2367366edd72959327b7f3ec005 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-=======
-${OBJECTDIR}/common.o: common.c  .generated_files/flags/default/8bfe7d78cdf0606e5ea2a3b47ce8027a58aac4bb .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
->>>>>>> Stashed changes
-=======
-${OBJECTDIR}/common.o: common.c  .generated_files/flags/default/8bfe7d78cdf0606e5ea2a3b47ce8027a58aac4bb .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
->>>>>>> Stashed changes
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/common.o.d 
 	@${RM} ${OBJECTDIR}/common.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  common.c  -o ${OBJECTDIR}/common.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/common.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off   
 	
 else
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 ${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/305c3615f97c481d0a473d20ddec357c8ea02e2b .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-=======
-${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/52b932233fff8bed2b7d7b709ebc5ed0762652 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
->>>>>>> Stashed changes
-=======
-${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/52b932233fff8bed2b7d7b709ebc5ed0762652 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
->>>>>>> Stashed changes
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  main.c  -o ${OBJECTDIR}/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/main.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off   
 	
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 ${OBJECTDIR}/common.o: common.c  .generated_files/flags/default/76e91d63c72e0b3d165c4a8dae4203f059d42305 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-=======
-${OBJECTDIR}/common.o: common.c  .generated_files/flags/default/eb7a041c062f62687261cbaca3262cedbdb9cec3 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
->>>>>>> Stashed changes
-=======
-${OBJECTDIR}/common.o: common.c  .generated_files/flags/default/eb7a041c062f62687261cbaca3262cedbdb9cec3 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
->>>>>>> Stashed changes
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/common.o.d 
 	@${RM} ${OBJECTDIR}/common.o 

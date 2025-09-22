@@ -13,6 +13,7 @@ void ADC_setup(void) {
     AD1CON1 = 0x0070;            // SSRC = 111, internal counter ends sampling and starts conversion
     AD1CHS  = 0x0002;            // Select AN2 (RB2) as input channel
     AD1CSSL = 0;                 // Disable channel scanning
+    AD1CON1bits.MODE12 = 1;      // Enable 12-bit operation mode
     AD1CON3 = 0x0F00;            // Sample time = 15 Tad, Tad = Tcy
     AD1CON2 = 0x0004;            // Interrupt flag set after 2 samples
     AD1CON1bits.ADON = 1;        // Turn ADC module ON
@@ -30,10 +31,10 @@ void ADC_read(void) {
 
     // Read 2 samples from the buffer 
     ldrValue  = ADC1BUF0;                
-    //ldrValue += *((&ADC1BUF0) + 1);
+    ldrValue += *((&ADC1BUF0) + 1);
 
     // 2 samples mean
-    //ldrValue >>= 1;
+    ldrValue >>= 1;
 
     LDR.value = ldrValue;  
 }
