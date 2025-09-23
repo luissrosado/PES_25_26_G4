@@ -56,7 +56,8 @@ void setupSOsc(
 
 void setupSPI1Slave(uint16_t SCLK_Pin, uint16_t CS_Pin, uint16_t MISO_Pin, uint16_t MOSI_Pin){
     // Enable the SPI1 Module
-    SET_BIT_ON_REG(PMD1, 3, 0);
+    PMD1bits.SPI1MD = 0;
+    //SET_BIT_ON_REG(PMD1, 3, 0);
     
     
     RPINR20bits.SDI1R = MISO_Pin;  // SDI1 input (MISO)
@@ -66,23 +67,32 @@ void setupSPI1Slave(uint16_t SCLK_Pin, uint16_t CS_Pin, uint16_t MISO_Pin, uint1
     
     SPI1CON1Lbits.SPIEN = 0;  // Disable SPI1 before config
     
-    // Setup as 16-bit communication, 16-bit FIFO
-    SPI1CON1Hbits.AUDEN  = 0;
-    SPI1CON1Lbits.MODE32 = 0;
-    SPI1CON1Lbits.MODE16 = 1;
-
-    SPI1CON1Lbits.MSTEN = 0;  // 0 = Slave mode
-    SPI1CON1Lbits.SMP   = 0;  // Input data sampled in the middle
-    SPI1CON1Lbits.CKE   = 1;  // Data changes on transition from active to idle clock state
-    SPI1CON1Lbits.CKP   = 0;  // Idle clock is low
-    SPI1CON1Lbits.SSEN  = 1;  // Enable Slave Select pin
-
-    SPI1STATLbits.SPIROV = 0; // Clear overflow
-    SPI1CON1Lbits.SPIEN  = 1; // Enable SPI1
+    SPI1CON1L = 0;
+    SPI1CON1H = 0;
+    SPI1CON2L = 0;
+    SPI1CON2 = 0;
+    
+    volatile uint8_t dump;
+    while (SPI1STATLbits.SPIRBF) dump = SPI1BUFL; // clear RX
+    SPI1STATLbits.SPIROV = 0;   // Clear overflow
+    
+    SPI1IMSKLbits.SPIRBFEN = 1; // Enable Interrupt Event by Full Receive Buffer
 
     // === Configure SPI Interrupt ===
-    IFS0bits.SPI1IF = 0; // Clear interrupt flag
-    IEC0bits.SPI1IE = 1; // Enable SPI interrupt
+    IFS3bits.SPI1RXIF = 0; // Clear interrupt flag
+    IPC14bits.SPI1RXIP = 7;
+    IEC3bits.SPI1RXIE = 1; // Enable SPI interrupt
+    
+
+    SPI1CON1Lbits.MSTEN = 0;    // 0 = Slave mode
+    SPI1CON1Lbits.SSEN  = 1;    // Enable Slave Select pin
+    SPI1CON1Lbits.CKP   = 0;    // Idle clock is low
+    SPI1CON1Lbits.CKE   = 1;    // Data changes on transition from active to idle clock state
+    SPI1CON1Lbits.SMP   = 0;    // Input data sampled in the middle
+    SPI1CON1Lbits.MODE32 = 0;
+    SPI1CON1Lbits.MODE16 = 1;
+    
+    SPI1CON1Lbits.SPIEN  = 1;   // Enable SPI1
     
     return;
 }
