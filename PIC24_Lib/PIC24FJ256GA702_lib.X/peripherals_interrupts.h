@@ -80,6 +80,36 @@ void setupTimer1(uint16_t t1con, uint16_t pr1);
 
 /**
     <p><b>Function prototype:</b></p>
+ * void setupADC(
+ *     uint16_t ad1con1,
+ *     uint16_t ad1con2,
+ *     uint16_t ad1con3,
+ *     uint16_t ad1chs,
+ *     uint16_t ad1cssl,
+ *     uint16_t bit_mode
+ * )
+
+    <p><b>Description:</b></p>
+ * Sets up the internal ADC, check the datasheet from pages 285 to 290 for more details on its setup
+ * If you want to check the internal registers, check pages 291 to 302
+
+    <p><b>Parameters:</b></p>
+ * bit_mode sets the ADC up in 10-bit mode in case of '0' or 12-bit mode in case of '1'
+ * For the rest of the internal register setup check pages 291 to 302 of the datasheet
+
+ */
+void setupADC(
+    uint16_t ad1con1,
+    uint16_t ad1con2,
+    uint16_t ad1con3,
+    uint16_t ad1chs,
+    uint16_t ad1cssl,
+    uint16_t bit_mode
+);
+
+
+/**
+    <p><b>Function prototype:</b></p>
  * void setupInterrupt(struct interrupt_t interrupt, uint8_t priority)
 
     <p><b>Description:</b></p>
@@ -118,7 +148,7 @@ struct interrupt_t{
 #define U1_TX_INTERRUPT     ((struct interrupt_t){&IFS0, &IEC0, 12, &IPC3, 2})
 #define U1_TX_ISR           __attribute__((__interrupt__, auto_psv)) _U1TXInterrupt
 #define ADC1_INTERRUPT      ((struct interrupt_t){&IFS0, &IEC0, 13, &IPC3, 6})
-#define ADC1_TX_ISR         __attribute__((__interrupt__, auto_psv)) _ADC1Interrupt
+#define ADC1_ISR            __attribute__((__interrupt__, auto_psv)) _ADC1Interrupt
 #define DMA1_INTERRUPT      ((struct interrupt_t){&IFS0, &IEC0, 14, &IPC3, 10})
 #define DMA1_ISR            __attribute__((__interrupt__, auto_psv)) _DMA1Interrupt
 #define I2C1_S_INTERRUPT    ((struct interrupt_t){&IFS1, &IEC1, 0, &IPC4, 2})
@@ -131,9 +161,11 @@ void setupInterrupt(struct interrupt_t interrupt, uint8_t priority);
 #define DISABLE_INTERRUPTS  INTCON2bits.GIE = 0;                // Disable the Global Interrupt Flag  
 #define TOGGLE_INTERRUPTS   INTCON2bits.GIE = !INTCON2bits.GIE; // Toggle the Global Interrupt Flags
 
+
+
 /**
     <p><b>Function prototype:</b></p>
- * void setupSOsc(
+ * void setupOsc(
  *   uint16_t osccon,
  *   uint16_t osctun,
  *   uint16_t clkdiv,
@@ -159,13 +191,14 @@ void setupInterrupt(struct interrupt_t interrupt, uint8_t priority);
  * oscfdiv - provide control for the system oscillator frequency divider
  *           --bit configuration is in page 105 of the datasheet--
  */
-void setupSOsc(
+void setupOsc(
     uint16_t osccon,
     uint16_t osctun,
     uint16_t clkdiv,
     uint16_t oscdiv,
     uint16_t oscfdiv
 );
+
 
 /**
     <p><b>Function prototype:</b></p>

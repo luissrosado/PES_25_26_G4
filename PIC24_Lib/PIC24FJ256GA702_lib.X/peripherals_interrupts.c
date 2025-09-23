@@ -12,7 +12,7 @@
 
 void setupTimer1(uint16_t t1con, uint16_t pr1){
     // Enable Timer1 module
-    SET_BIT_ON_REG(PMD1, 11, 0);
+    PMD1bits.T1MD = 0;
     
     // Set it up
     T1CON = t1con;
@@ -23,6 +23,30 @@ void setupTimer1(uint16_t t1con, uint16_t pr1){
     
     return;
 }
+
+void setupADC(
+    uint16_t ad1con1,
+    uint16_t ad1con2,
+    uint16_t ad1con3,
+    uint16_t ad1chs,
+    uint16_t ad1cssl,
+    uint16_t bit_mode
+) {
+    PMD1bits.AD1MD = 0;         // Enable ADC1
+    
+    AD1CON1 = ad1con1;
+    AD1CON2 = ad1con2;
+    AD1CON3 = ad1con3;
+    
+    AD1CHS  = ad1chs;
+    AD1CSSL = ad1cssl;
+    AD1CON1bits.MODE12 = bit_mode;     // Choose bit operation mode
+    
+    AD1CON1bits.ADON = 1;       // Turn ADC module ON
+    
+    return;
+}
+
 
 void setupInterrupt(struct interrupt_t spec_inter, uint8_t priority){    
     if (priority > 0b00000111){
@@ -38,7 +62,9 @@ void setupInterrupt(struct interrupt_t spec_inter, uint8_t priority){
     
 }
 
-void setupSOsc(
+
+
+void setupOsc(
     uint16_t osccon,
     uint16_t osctun,
     uint16_t clkdiv,
@@ -53,6 +79,7 @@ void setupSOsc(
     
     return;
 }
+
 
 void setupSPI1Slave(uint16_t SCLK_Pin, uint16_t CS_Pin, uint16_t MISO_Pin, uint16_t MOSI_Pin){
     // Enable the SPI1 Module

@@ -45,6 +45,17 @@ void setup(void){
     
     ENABLE_INTERRUPTS;
     
+    
+    // Setup Oscillator with the FRC = 8 MHz
+    // OSCDIV = 0x0005 means frequency = 8 MHz / 10 = 0.8 MHz
+    setupOsc(
+        0x0000,
+        0x0000,
+        0x0000,
+        0x0005,
+        0x0000
+    );
+    
     return;
 }
 
