@@ -249,9 +249,9 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x118e
+.debug_info       0x000000       0x1196
  *(.debug_info)
- .debug_info      0x000000       0x118e build/default/production/main.o
+ .debug_info      0x000000       0x1196 build/default/production/main.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x120

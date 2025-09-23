@@ -4,13 +4,13 @@ Tool Name:
   c:\program files\microchip\xc16\v2.10\bin\bin\..\bin/elf-ld.exe
 
 Command:
-  -TC:\\Users\\guga2\\AppData\\Local\\Temp\\tmp000061cc.00 \
-  -TC:\\Users\\guga2\\AppData\\Local\\Temp\\tmp000061cc.01 \
-  -TC:\\Users\\guga2\\AppData\\Local\\Temp\\tmp000061cc.02 \
-  -TC:\\Users\\guga2\\AppData\\Local\\Temp\\tmp000061cc.03 \
-  -TC:\\Users\\guga2\\AppData\\Local\\Temp\\tmp000061cc.04 \
-  -TC:\\Users\\guga2\\AppData\\Local\\Temp\\tmp000061cc.05 \
-  -TC:\\Users\\guga2\\AppData\\Local\\Temp\\tmp000061cc.06 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00002948.00 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00002948.01 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00002948.02 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00002948.03 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00002948.04 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00002948.05 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00002948.06 \
   -p24FJ1024GB610 \
   --mdfp=C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC24F-GA-GB_DFP/1.9.336/xc16 \
   -o \
@@ -304,9 +304,9 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x118e
+.debug_info       0x000000       0x1196
  *(.debug_info)
- .debug_info      0x000000       0x118e build/default/debug/main.o
+ .debug_info      0x000000       0x1196 build/default/debug/main.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x120

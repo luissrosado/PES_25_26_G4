@@ -155,6 +155,13 @@ struct interrupt_t{
 #define I2C1_S_ISR          __attribute__((__interrupt__, auto_psv)) _SI2C1Interrupt
 #define I2C1_M_INTERRUPT    ((struct interrupt_t){&IFS1, &IEC1, 1, &IPC4, 6})
 #define I2C1_M_ISR          __attribute__((__interrupt__, auto_psv)) _MI2C1Interrupt
+// -- More exist here in the middle but were not needed -- //
+#define SPI1_RX_INTERRUPT   ((struct interrupt_t){&IFS3, &IEC3, 10, &IPC14, 10})
+#define SPI1_RX_ISR         __attribute__((__interrupt__, auto_psv)) _SPI1RXInterrupt
+#define SPI2_RX_INTERRUPT   ((struct interrupt_t){&IFS3, &IEC3, 11, &IPC14, 14})
+#define SPI2_RX_ISR         __attribute__((__interrupt__, auto_psv)) _SPI2RXInterrupt
+#define SPI3_RX_INTERRUPT   ((struct interrupt_t){&IFS3, &IEC3, 12, &IPC15, 2})
+#define SPI3_RX_ISR         __attribute__((__interrupt__, auto_psv)) _SPI3RXInterrupt
 // PUT MORE HERE IF NEEDED
 void setupInterrupt(struct interrupt_t interrupt, uint8_t priority);
 #define ENABLE_INTERRUPTS   INTCON2bits.GIE = 1;                // Enable the Global Interrupt Flag  

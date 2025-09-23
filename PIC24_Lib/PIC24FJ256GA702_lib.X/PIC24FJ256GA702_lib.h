@@ -13,7 +13,9 @@
 #ifndef PIC24FJ256GA702_LIB_H
 #define	PIC24FJ256GA702_LIB_H
 
-#include <xc.h> // include processor files - each processor file is guarded. 
+#include <xc.h> // include processor files - each processor file is guarded.
+#include <libpic30.h>
+
 #include "GPIO.h"
 #include "common_lib.h"
 #include "peripherals_interrupts.h"

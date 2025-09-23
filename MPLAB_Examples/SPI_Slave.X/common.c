@@ -13,11 +13,18 @@
 
 #include "SPI_Pins.h"
 
-void __attribute__((__interrupt__, auto_psv)) _SPI1RXInterrupt (void){
-    uint16_t received = (SPI1BUFH << 8) | SPI1BUFL;
+void SPI1_RX_ISR(void){
+    uint16_t received = SPI1BUFL;
     
     if (received == CMD_FROM_MASTER) {
+        toggleDigitalPin(RA0);
         SPI1BUFL = RESPONSE_TO_SEND;  // Queue response for next transfer
+    }
+  
+    if (SPI1STATLbits.SPIROV) {
+        volatile uint8_t dump = SPI1BUFL;
+        (void)dump;
+        SPI1STATLbits.SPIROV = 0;
     }
     
     IFS3bits.SPI1RXIF = 0;
@@ -35,6 +42,10 @@ void setup(void){
         0x0000
     );
     
+    // Setup Pin RA0 to a digital output
+    pinMode(RA0, OUTPUT);
+    digitalWrite(RA0, LOW);
+    
     // Insert your setup code here, to run once:
     pinMode(RB12, INPUT);
     pinMode(RB13, INPUT);
@@ -44,17 +55,6 @@ void setup(void){
     //setupInterrupt(SPI1_GEN_INTERRUPT, 7);
     
     ENABLE_INTERRUPTS;
-    
-    
-    // Setup Oscillator with the FRC = 8 MHz
-    // OSCDIV = 0x0005 means frequency = 8 MHz / 10 = 0.8 MHz
-    setupOsc(
-        0x0000,
-        0x0000,
-        0x0000,
-        0x0005,
-        0x0000
-    );
     
     return;
 }
