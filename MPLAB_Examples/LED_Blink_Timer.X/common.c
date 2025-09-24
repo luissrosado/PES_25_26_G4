@@ -29,7 +29,7 @@ void setup(void){
     );
     setupTimer1(0x8030, 3000);
     
-    // Setup Pin RB3 to a digital output
+    // Setup Pin RA0 to a digital output
     pinMode(RA0, OUTPUT);
     digitalWrite(RA0, LOW);
     

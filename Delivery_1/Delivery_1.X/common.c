@@ -35,7 +35,7 @@ void ADC1_ISR(void){
 }
 
 void T1_ISR(void){
-    toggleDigitalPin(RA0);
+    toggleDigitalPin(RB5);
     AD1CON1bits.ASAM = 1;           // Start ADC Conversion
     
     IFS0bits.T1IF = 0;
@@ -46,15 +46,15 @@ void setup(void){
     // Insert your setup code here, to run once:
     
     // Setup Pin RB3 to a digital output
-    pinMode(RA0, OUTPUT);
-    digitalWrite(RA0, HIGH);
+    pinMode(RB5, OUTPUT);
+    digitalWrite(RB5, HIGH);
     
-    pinMode(AN2, INPUT);
+    pinMode(AN1, INPUT);
     setupADC(
         0x0070,             // SSRC = 111, internal counter ends sampling and starts conversion
         0x0004,             // Interrupt flag set after 2 samples
         0x0F00,             // Sample time = 15 Tad, Tad = Tcy
-        0x0002,             // Select AN2 (RB2) as input channel
+        0x0001,             // Select AN1 (RA1) as input channel
         0,                  // Disable channel scanning
         1                   // Enable 12-bit mode
     );

@@ -54,12 +54,15 @@ void setupInterrupt(struct interrupt_t spec_inter, uint8_t priority){
     }
     
     SET_BIT_ON_REG(*(spec_inter.ifs_addr), spec_inter.ifs_iec_bit, 0); // Set interrupt flag to 0
-    SET_BIT_ON_REG(*(spec_inter.iec_addr), spec_inter.ifs_iec_bit, 1); // Enable the interrupt
+    
     // Set the priority on the register
     SET_BIT_ON_REG(*(spec_inter.ipc_addr), spec_inter.ipc_bit, priority & 0x04);
     SET_BIT_ON_REG(*(spec_inter.ipc_addr), spec_inter.ipc_bit - 1, priority & 0x02);
     SET_BIT_ON_REG(*(spec_inter.ipc_addr), spec_inter.ipc_bit - 2, priority & 0x01);
     
+    SET_BIT_ON_REG(*(spec_inter.iec_addr), spec_inter.ifs_iec_bit, 1); // Enable the interrupt
+    
+    return;
 }
 
 
@@ -83,33 +86,45 @@ void setupOsc(
 
 void setupSPI1Slave(uint16_t SCLK_Pin, uint16_t CS_Pin, uint16_t MISO_Pin, uint16_t MOSI_Pin){
     // Enable the SPI1 Module
-    SET_BIT_ON_REG(PMD1, 3, 0);
+    PMD1bits.SPI1MD = 0;
+    //SET_BIT_ON_REG(PMD1, 3, 0);
     
-    
-    RPINR20bits.SDI1R = MISO_Pin;  // SDI1 input (MISO)
-    RPOR7bits.RP14R = 0b00111;     // SDO1 output (MOSI)
-    RPINR20bits.SCK1R = SCLK_Pin;  // SCK1 input
-    RPINR21bits.SS1R  = CS_Pin;    // SS1 input
+    IEC3bits.SPI1RXIE = 0;
+    IFS3bits.SPI1RXIF = 0;
     
     SPI1CON1Lbits.SPIEN = 0;  // Disable SPI1 before config
     
-    // Setup as 16-bit communication, 16-bit FIFO
-    SPI1CON1Hbits.AUDEN  = 0;
+    SPI1CON1L = 0;
+    SPI1CON1H = 0;
+    SPI1CON2L = 0;
+    SPI1CON2 = 0;
+    
+    RPINR20bits.SDI1R = MOSI_Pin;  // SDI1 input (MOSI)
+    RPOR7bits.RP15R = 0b00111;     // SDO1 output (MISO)
+    RPINR20bits.SCK1R = SCLK_Pin;  // SCK1 input
+    RPINR21bits.SS1R  = CS_Pin;    // SS1 input
+    
+    volatile uint16_t dump;
+    while (SPI1STATLbits.SPIRBF) dump = SPI1BUFL; // clear RX
+    SPI1STATLbits.SPIROV = 0;   // Clear overflow
+
+    // Use Standard Buffer mode (clear ENHBUF) unless you want enhanced
+    SPI1CON1Lbits.ENHBUF = 0;   // step 4: standard buffer
+    
+    SPI1IMSKLbits.SPIRBFEN = 1; // Enable Interrupt Event by Full Receive Buffer
+
+    SPI1CON1Lbits.MSTEN = 0;    // 0 = Slave mode
+    SPI1CON1Lbits.SSEN  = 1;    // Enable Slave Select pin
+    SPI1CON1Lbits.CKP   = 0;    // Idle clock is low
+    SPI1CON1Lbits.CKE   = 1;    // Data changes on transition from active to idle clock state
+    SPI1CON1Lbits.SMP   = 0;    // Input data sampled in the middle
     SPI1CON1Lbits.MODE32 = 0;
     SPI1CON1Lbits.MODE16 = 1;
 
-    SPI1CON1Lbits.MSTEN = 0;  // 0 = Slave mode
-    SPI1CON1Lbits.SMP   = 0;  // Input data sampled in the middle
-    SPI1CON1Lbits.CKE   = 1;  // Data changes on transition from active to idle clock state
-    SPI1CON1Lbits.CKP   = 0;  // Idle clock is low
-    SPI1CON1Lbits.SSEN  = 1;  // Enable Slave Select pin
-
-    SPI1STATLbits.SPIROV = 0; // Clear overflow
-    SPI1CON1Lbits.SPIEN  = 1; // Enable SPI1
-
     // === Configure SPI Interrupt ===
-    IFS0bits.SPI1IF = 0; // Clear interrupt flag
-    IEC0bits.SPI1IE = 1; // Enable SPI interrupt
+    setupInterrupt(SPI1_RX_INTERRUPT, 7);
+    
+    SPI1CON1Lbits.SPIEN  = 1;   // Enable SPI1
     
     return;
 }
