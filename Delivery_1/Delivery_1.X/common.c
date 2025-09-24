@@ -11,31 +11,18 @@
 #include "common.h"
 #include "../../PIC24_Lib/PIC24FJ256GA702_lib.X/PIC24FJ256GA702_lib.h"
 #include "ldr.h"
+#include "SPI.h"
 
-volatile LDR_Registers_t LDR = {
-    .value = 0,
-    .threshold = LDR_THRESHOLD,
-    .count = 0
-};
 
-void ADC1_ISR(void){
-    uint16_t ldrValue;
-    AD1CON1bits.ASAM = 0;       // Stop Conversion
-    
-    // Calculate the value according to 2 samples
-    ldrValue = (ADC1BUF0 + *((&ADC1BUF0) + 1)) >> 1;
-    
-    // Store value in global variable
-    LDR.value = ldrValue;
-    
-    ADC_check(&LDR);
-    
-    IFS0bits.AD1IF = 0;
-    return;
-}
 
+#define LED_PIN RB5
+#define LDR_PIN AN1
+#define LDR_SEL 0x0001  // Indicates the ADC what's the LDR pin
+
+
+// Timer 1 Interrupt Function
 void T1_ISR(void){
-    toggleDigitalPin(RB5);
+    toggleDigitalPin(LED_PIN);
     AD1CON1bits.ASAM = 1;           // Start ADC Conversion
     
     IFS0bits.T1IF = 0;
@@ -46,15 +33,22 @@ void setup(void){
     // Insert your setup code here, to run once:
     
     // Setup Pin RB3 to a digital output
-    pinMode(RB5, OUTPUT);
-    digitalWrite(RB5, HIGH);
+    pinMode(LED_PIN, OUTPUT);
+    digitalWrite(LED_PIN, HIGH);
     
-    pinMode(AN1, INPUT);
+    // Insert your setup code here, to run once:
+    pinMode(RB12, INPUT);
+    pinMode(RB13, INPUT);
+    pinMode(RB14, INPUT);
+    pinMode(RB15, OUTPUT);
+    setupSPI1Slave(SPI1_SCLK_RPIN, SPI1_CS_RPIN, SPI1_MISO_RPIN, SPI1_MOSI_RPIN);
+    
+    pinMode(LDR_PIN, INPUT);
     setupADC(
         0x0070,             // SSRC = 111, internal counter ends sampling and starts conversion
         0x0004,             // Interrupt flag set after 2 samples
         0x0F00,             // Sample time = 15 Tad, Tad = Tcy
-        0x0001,             // Select AN1 (RA1) as input channel
+        LDR_SEL,             // Select AN1 (RA1) as input channel
         0,                  // Disable channel scanning
         1                   // Enable 12-bit mode
     );
