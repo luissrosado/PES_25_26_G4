@@ -37,11 +37,29 @@
 // TODO Insert appropriate #include <>
 #define WHO_AM_I_reg 0x0F
 #define WHO_AM_I 0x33
-#define int8_t __NEED_int8_t
+#define CTRL_REG0 0x1E
+#define CTRL_REG1 0x20
+#define CTRL_REG2 0x21
+#define CTRL_REG3 0x22
+#define CTRL_REG4 0x23
+#define CTRL_REG5 0x24
+#define CTRL_REG6 0x25
+
 // TODO Insert C++ class definitions if appropriate
+typedef struct LIS{
+  int16_t accelX;
+  int16_t accelY;
+  int16_t accelZ;
+}LIS;
 
 // TODO Insert declarations
-int8_t who_am_i();
+int8_t who_am();
+void LISconfig();
+void accel(LIS *accel);
+void chip_select ();
+void chip_deselect ();
+
+
 // Comment a function and leverage automatic documentation with slash star star
 /**
     <p><b>Function prototype:</b></p>

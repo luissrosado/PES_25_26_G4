@@ -9,6 +9,8 @@
 #include "xc.h"
 #include "common.h"
 #include "spi.h"
+#include "LIS3DH.h"
+
 
 // Always runs this to start some key registers at key values
 void alwaysSetup(void){
@@ -32,17 +34,18 @@ void alwaysSetup(void){
     PMD6 = 0xFFFF;
     PMD7 = 0xFFFF;
     PMD8 = 0xFFFF;
-    
+    pinMode(RB3, OUTPUT);
     return;
 }
 
 int main(void){
     alwaysSetup();
-    
+    int8_t data;
     setup();
     spi_config_master();
+    data=who_am();
     while(1){
-        loop();
+        //loop();
     }
     
     return 0;

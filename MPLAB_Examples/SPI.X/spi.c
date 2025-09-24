@@ -7,6 +7,7 @@
 
 
 #include "spi.h"
+#include "common.h"
 
 void spi_config_master(){
     SPI1CON1Hbits.AUDEN=0; //DISABLE AUDIO SPI
@@ -34,10 +35,33 @@ void spi1_disable(){
 }
 
 void spi1_write(int16_t *data){
-    SPI1BUFL = &data;
+    
+    SPI1BUFL = *data;
     return;
 }
 void spi1_read(int16_t *data){
     data = SPI1BUFL;
     return;
+}
+uint16_t spi1_transfer(uint16_t dataOut) {
+    while (SPI1STATLbits.SPITBF);   // Espera que o buffer TX fique livre
+    SPI1BUFL = dataOut;             // Envia 16 bits, o HIGH BYTE e o address, o low byte é os dados po addr
+    while (!SPI1STATLbits.SPIRBF);  // Espera receção
+    return SPI1BUFL;                // Retorna dado recebido
+}
+
+void chip_select(){
+    digitalWrite(RB3, LOW);
+    return;
+}
+
+void chip_deselect(){
+    digitalWrite(RB3, HIGH);
+    return;
+}
+
+void spi2PinConfig(){
+    RPOR0bits.RP0R =10;
+    RPOR0bits.RP1R =11;
+    RPINR22bits.SDI2R = 2; //RP2 supposedly
 }
