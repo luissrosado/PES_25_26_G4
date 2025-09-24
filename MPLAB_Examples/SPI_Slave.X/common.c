@@ -18,6 +18,8 @@ void SPI1_RX_ISR(void){
     
     if (received == CMD_FROM_MASTER) {
         SPI1BUFL = RESPONSE_TO_SEND;  // Queue response for next transfer
+    } else{
+        SPI1BUFL = 0x0FF0;
     }
     toggleDigitalPin(RA0);
   

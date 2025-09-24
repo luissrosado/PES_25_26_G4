@@ -12,7 +12,7 @@
 #define SPI1_CS_RPIN     12   // RP12 -> CS1 (Slave Select)
 
 // ===== SPI Constants =====
-#define CMD_FROM_MASTER  0x0055
+#define CMD_FROM_MASTER  0xAAAA
 #define RESPONSE_TO_SEND 0x00AA
 
 #ifdef	__cplusplus
