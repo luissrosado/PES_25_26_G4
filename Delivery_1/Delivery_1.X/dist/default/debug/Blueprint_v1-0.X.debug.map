@@ -1,13 +1,22 @@
-Microchip Technology Inc, v2.10 (A)
+Microchip Technology Inc, v2.10 (B)
 
 Tool Name:
   c:\program files\microchip\xc16\v2.10\bin\bin\..\bin/elf-ld.exe
 
 Command:
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.00 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.01 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.02 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.03 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.04 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.05 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.06 \
   -p24FJ256GA702 \
+  --mdfp=C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC24F-GA-GB_DFP/1.10.375/xc16 \
   -o \
-  dist/default/production/Blueprint_v1-0.X.production.elf \
+  dist/default/debug/Blueprint_v1-0.X.debug.elf \
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/.. \
+  -LC:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC24F-GA-GB_DFP/1.10.375/xc16/bin/../support/PIC24F/gld \
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../lib \
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/PIC24E/gld \
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/PIC24F/gld \
@@ -16,12 +25,14 @@ Command:
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/dsPIC33C/gld \
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/dsPIC33E/gld \
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/dsPIC33F/gld \
-  build/default/production/main.o \
-  build/default/production/common.o \
+  build/default/debug/main.o \
+  build/default/debug/common.o \
   ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a \
   --local-stack \
   --defsym=__MPLAB_BUILD=1 \
-  -Tp24FJ256GA702.gld.00 \
+  --defsym=__MPLAB_DEBUG=1 \
+  --defsym=__DEBUG=1 \
+  -Tp24FJ256GA702.gld.07 \
   --stack=16 \
   --check-sections \
   --data-init \
@@ -33,10 +44,10 @@ Command:
   --stackguard=16 \
   --no-force-link \
   --smart-io \
-  -Map=dist/default/production/Blueprint_v1-0.X.production.map \
+  -Map=dist/default/debug/Blueprint_v1-0.X.debug.map \
   --report-mem \
   --memorysummary \
-  dist/default/production/memoryfile.xml \
+  dist/default/debug/memoryfile.xml \
   -start-group \
   --library=c99-pic30-elf \
   --library=m-elf \
@@ -55,7 +66,7 @@ c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_s
                               (__crt_start_mode_normal)
 
 
-xc16-ld 2.10 (A)
+xc16-ld 2.10 (B)
 
 Default Code Model: Small
 Default Data Model: Large
@@ -75,8 +86,15 @@ section                    address   length (PC units)   length (bytes) (dec)
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
+reserve_data_0x800           0x800                0x1c            0x1c  (28)
+reserve_data_0x81c           0x81c                 0x2             0x2  (2)
+reserve_data_0x81e           0x81e                 0x2             0x2  (2)
+reserve_data_0x820           0x820                 0x2             0x2  (2)
+reserve_data_0x822           0x822                 0x2             0x2  (2)
+reserve_data_0x824           0x824                 0x4             0x4  (4)
+reserve_data_0x82a           0x82a                0x26            0x26  (38)
 
-                 Total "data" memory used (bytes):              0  (0) 
+                 Total "data" memory used (bytes):           0x4e  (78) <1%
 
 
 Dynamic Memory Usage
@@ -84,9 +102,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x800                              0x4000  (16384)
+stack                        0x850                              0x3fb0  (16304)
 
-                 Maximum dynamic memory (bytes):         0x4000  (16384)
+                 Maximum dynamic memory (bytes):         0x3fb0  (16304)
 
 Info: Project is using a large data memory model when small data memory model is sufficient.
 
@@ -135,10 +153,47 @@ FDEVOPT1         0x02af2c           0x000002
 
 Linker script and memory map
 
-LOAD build/default/production/main.o
-LOAD build/default/production/common.o
+
+reserve_data_0x800
+                    0x0800         0x1c
+                    0x081c                  . = 0x1c
+ *fill*             0x0800         0x1c00
+
+reserve_data_0x81c
+                    0x081c          0x2
+                    0x081e                  . = 0x2
+ *fill*             0x081c          0x200
+
+reserve_data_0x81e
+                    0x081e          0x2
+                    0x0820                  . = 0x2
+ *fill*             0x081e          0x200
+
+reserve_data_0x820
+                    0x0820          0x2
+                    0x0822                  . = 0x2
+ *fill*             0x0820          0x200
+
+reserve_data_0x822
+                    0x0822          0x2
+                    0x0824                  . = 0x2
+ *fill*             0x0822          0x200
+
+reserve_data_0x824
+                    0x0824          0x4
+                    0x0828                  . = 0x4
+ *fill*             0x0824          0x400
+
+reserve_data_0x82a
+                    0x082a         0x26
+                    0x0850                  . = 0x26
+ *fill*             0x082a         0x2600
+LOAD build/default/debug/main.o
+LOAD build/default/debug/common.o
 LOAD ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a
                     0x0001                  __MPLAB_BUILD = 0x1
+                    0x0001                  __MPLAB_DEBUG = 0x1
+                    0x0001                  __DEBUG = 0x1
 LOAD pPIC24Fxxx
 LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libfx-elf.a
                     0x2af00                  __FSEC = 0x2af00
@@ -218,26 +273,26 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000        0x48d
+.debug_info       0x000000        0x477
  *(.debug_info)
- .debug_info      0x000000        0x322 build/default/production/main.o
- .debug_info      0x000322        0x16b build/default/production/common.o
+ .debug_info      0x000000        0x322 build/default/debug/main.o
+ .debug_info      0x000322        0x155 build/default/debug/common.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000         0xa4
  *(.debug_abbrev)
- .debug_abbrev    0x000000         0x70 build/default/production/main.o
- .debug_abbrev    0x000070         0x34 build/default/production/common.o
+ .debug_abbrev    0x000000         0x70 build/default/debug/main.o
+ .debug_abbrev    0x000070         0x34 build/default/debug/common.o
 
-.debug_line       0x000000        0x126
+.debug_line       0x000000        0x150
  *(.debug_line)
- .debug_line      0x000000         0xee build/default/production/main.o
- .debug_line      0x0000ee         0x38 build/default/production/common.o
+ .debug_line      0x000000        0x118 build/default/debug/main.o
+ .debug_line      0x000118         0x38 build/default/debug/common.o
 
 .debug_frame      0x000000         0x90
  *(.debug_frame)
- .debug_frame     0x000000         0x48 build/default/production/main.o
- .debug_frame     0x000048         0x48 build/default/production/common.o
+ .debug_frame     0x000000         0x48 build/default/debug/main.o
+ .debug_frame     0x000048         0x48 build/default/debug/common.o
 
 .debug_loc
  *(.debug_loc)
@@ -249,9 +304,9 @@ __FDEVOPT1
                   0x000000         0x50
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x2b build/default/production/main.o
+                  0x000000         0x2b build/default/debug/main.o
  .debug_pubnames
-                  0x00002b         0x25 build/default/production/common.o
+                  0x00002b         0x25 build/default/debug/common.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -259,9 +314,9 @@ __FDEVOPT1
 .debug_aranges    0x000000         0x30
  *(.debug_aranges)
  .debug_aranges
-                  0x000000         0x18 build/default/production/main.o
+                  0x000000         0x18 build/default/debug/main.o
  .debug_aranges
-                  0x000018         0x18 build/default/production/common.o
+                  0x000018         0x18 build/default/debug/common.o
                     0x0000                  WREG0 = 0x0
                     0x0000                  _WREG0 = 0x0
                     0x0002                  WREG1 = 0x2
@@ -1589,12 +1644,6 @@ __FDEVOPT1
                     0x023e                  _OC2 = 0x23e
                     0x0248                  OC3 = 0x248
                     0x0248                  _OC3 = 0x248
-                    0x03fe                  SPI1 = 0x3fe
-                    0x03fe                  _SPI1 = 0x3fe
-                    0x041a                  SPI2 = 0x41a
-                    0x041a                  _SPI2 = 0x41a
-                    0x0436                  SPI3 = 0x436
-                    0x0436                  _SPI3 = 0x436
                     0x0398                  UART1 = 0x398
                     0x0398                  _UART1 = 0x398
                     0x03ae                  UART2 = 0x3ae
@@ -1604,31 +1653,31 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a
 LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a
 END GROUP
-OUTPUT(dist/default/production/Blueprint_v1-0.X.production.elf elf32-pic30)
+OUTPUT(dist/default/debug/Blueprint_v1-0.X.debug.elf elf32-pic30)
 LOAD default_isr
 
 .debug_pubtypes
                   0x000030         0x31
  .debug_pubtypes
-                  0x000030         0x1f build/default/production/main.o
+                  0x000030         0x1f build/default/debug/main.o
  .debug_pubtypes
-                  0x00004f         0x12 build/default/production/common.o
+                  0x00004f         0x12 build/default/debug/common.o
 
 __c30_signature
                   0x000061         0x18
  __c30_signature
-                  0x000061          0x6 build/default/production/main.o
+                  0x000061          0x6 build/default/debug/main.o
  __c30_signature
-                  0x000067          0x6 build/default/production/common.o
+                  0x000067          0x6 build/default/debug/common.o
  __c30_signature
                   0x00006d          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
  __c30_signature
                   0x000073          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_24.o)
 
 .text             0x00020a         0x48
- .text            0x00020a         0x3c build/default/production/main.o
+ .text            0x00020a         0x3c build/default/debug/main.o
                   0x00020a                  _alwaysSetup
                   0x00023c                  _main
- .text            0x000246          0xc build/default/production/common.o
+ .text            0x000246          0xc build/default/debug/common.o
                   0x000246                  _setup
                   0x00024c                  _loop
