@@ -26,12 +26,12 @@ void init_spi1(void)
     // Pin mapping
     RPINR20bits.SDI1R = 26;    // SDI (MISO) -> RP26
     RPOR9bits.RP19R   = 7;     // SDO (MOSI) -> RP19
-    RPOR10bits.RP21R  = 8;     // SCK -> RP21
+    RPOR10bits.RP21R  = 8;     // SCK -> RP21 
 
     // Chip Select pin (RB1)
-    ANSELBbits.ANSB1 = 0;      // Set RB1 as digital
-    TRISBbits.TRISB1 = 0;      // Configure as output
-    LATBbits.LATB1   = 1;      // Set high (not selected by default)
+    ANSELGbits.ANSG9 = 0;      // Set RB1 as digital
+    TRISGbits.TRISG9 = 0;      // Configure as output
+    LATGbits.LATG9 = 1;      // Set high (not selected by default)
 
     SPI1CON1Lbits.SPIEN = 1;   // Enable SPI module
 }
@@ -41,21 +41,24 @@ uint16_t SPI1_Transfer16(uint16_t data)
 {
     uint16_t rx;
 
-    LATBbits.LATB1 = 0;        // Assert CS (active low)
+    LATGbits.LATG9 = 0;        // Assert CS (active low)
     __delay_us(5);             // Small delay for setup
 
     SPI1BUFL = data;           // Write data to transmit buffer
     while (!SPI1STATLbits.SPIRBF); // Wait until data is received
     rx = SPI1BUFL;             // Read received data
-
-    LATBbits.LATB1 = 1;        // De-assert CS (inactive high)
+    
+    __delay_us(5);
+    
+    LATGbits.LATG9 = 1;        // De-assert CS (inactive high)
+    
     return rx;
 }
 
 // ===== Main Program =====
 int main(void)
 {
-    uint16_t command = 0x0055;
+    uint16_t command = 0xAAAA;
     uint16_t response;
 
     init_spi1();        // Initialize SPI1
