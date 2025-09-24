@@ -89,10 +89,10 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100               0x10a           0x18f  (399)
-.text                        0x20a                0x8e            0xd5  (213)
-.init.delay32                0x298                0x1c            0x2a  (42)
+.text                        0x20a                0x94            0xde  (222)
+.init.delay32                0x29e                0x1c            0x2a  (42)
 
-                 Total "program" memory used (bytes):          0x28e  (654) <1%
+                 Total "program" memory used (bytes):          0x297  (663) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x8000]
@@ -124,8 +124,8 @@ External Symbols in Program Memory (by address):
                   0x000204                  __DefaultInterrupt
                   0x00020a                  _init_spi1
                   0x000252                  _SPI1_Transfer16
-                  0x000278                  _main
-                  0x000298                  ___delay32
+                  0x00027e                  _main
+                  0x00029e                  ___delay32
                   0x0abf00                  __FSEC.sec
 
 External Symbols in Program Memory (by name):
@@ -133,13 +133,13 @@ External Symbols in Program Memory (by name):
                   0x000252                  _SPI1_Transfer16
                   0x000204                  __DefaultInterrupt
                   0x0abf00                  __FSEC.sec
-                  0x000298                  ___delay32
+                  0x00029e                  ___delay32
                   0x000152                  __data_init
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
                   0x00020a                  _init_spi1
-                  0x000278                  _main
+                  0x00027e                  _main
 
 Memory Configuration
 
@@ -249,18 +249,18 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x118e
+.debug_info       0x000000        0xee2
  *(.debug_info)
- .debug_info      0x000000       0x118e build/default/production/main.o
+ .debug_info      0x000000        0xee2 build/default/production/main.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x120
  *(.debug_abbrev)
  .debug_abbrev    0x000000        0x120 build/default/production/main.o
 
-.debug_line       0x000000        0x127
+.debug_line       0x000000        0x128
  *(.debug_line)
- .debug_line      0x000000        0x127 build/default/production/main.o
+ .debug_line      0x000000        0x128 build/default/production/main.o
 
 .debug_frame      0x000000         0x62
  *(.debug_frame)
@@ -2448,12 +2448,12 @@ __c30_signature
 .config_BSLIM     0x0abf10          0x2
  .config_BSLIM    0x0abf10          0x2 build/default/production/main.o
 
-.text             0x00020a         0x8e
- .text            0x00020a         0x8e build/default/production/main.o
+.text             0x00020a         0x94
+ .text            0x00020a         0x94 build/default/production/main.o
                   0x00020a                  _init_spi1
                   0x000252                  _SPI1_Transfer16
-                  0x000278                  _main
+                  0x00027e                  _main
 
-.init.delay32     0x000298         0x1c
- .init.delay32    0x000298         0x1c c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(delay32da.Meo)
-                  0x000298                  ___delay32
+.init.delay32     0x00029e         0x1c
+ .init.delay32    0x00029e         0x1c c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(delay32da.Meo)
+                  0x00029e                  ___delay32
