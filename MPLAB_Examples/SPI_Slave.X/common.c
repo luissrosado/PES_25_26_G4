@@ -17,9 +17,9 @@ void SPI1_RX_ISR(void){
     uint16_t received = SPI1BUFL;
     
     if (received == CMD_FROM_MASTER) {
-        toggleDigitalPin(RA0);
         SPI1BUFL = RESPONSE_TO_SEND;  // Queue response for next transfer
     }
+    toggleDigitalPin(RA0);
   
     if (SPI1STATLbits.SPIROV) {
         volatile uint8_t dump = SPI1BUFL;
