@@ -13,7 +13,7 @@
 
 // ===== SPI Constants =====
 #define CMD_FROM_MASTER  0xAAAA
-#define RESPONSE_TO_SEND 0x00AA
+#define RESPONSE_TO_SEND 0x0F23
 
 #ifdef	__cplusplus
 extern "C" {

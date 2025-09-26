@@ -10,10 +10,12 @@
 #include "common.h"
 #include "../../PIC24_Lib/PIC24FJ256GA702_lib.X/PIC24FJ256GA702_lib.h"
 
+#define LED_PIN RB15
+
 void T1_ISR(void){
     IFS0bits.T1IF = 0;
     
-    toggleDigitalPin(RA0);
+    //toggleDigitalPin(LED_PIN);
     
     return;
 }
@@ -30,8 +32,8 @@ void setup(void){
     setupTimer1(0x8030, 3000);
     
     // Setup Pin RA0 to a digital output
-    pinMode(RA0, OUTPUT);
-    digitalWrite(RA0, LOW);
+    pinMode(LED_PIN, OUTPUT);
+    digitalWrite(LED_PIN, HIGH);
     
     
     // Interrupt flags
@@ -44,7 +46,8 @@ void setup(void){
 void loop(void){
     // Insert your loop code here, to run repeatedly:
     // Using idle, the internal clock keeps working and so does Timer1
-    Idle();
+    //Idle();
+    digitalWrite(LED_PIN, HIGH);
     // Using sleep, the internal clock stops working and so does Timer1
     // Unless it is using an external clock
     //Sleep();

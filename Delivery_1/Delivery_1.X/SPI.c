@@ -8,14 +8,21 @@
 
 #include "xc.h"
 #include "SPI.h"
+#include "../../PIC24_Lib/PIC24FJ256GA702_lib.X/PIC24FJ256GA702_lib.h"
+#include "ldr.h"
 
+extern LDR_Registers_t LDR;
 
 // SPI 1 Interrupt Function
 void SPI1_RX_ISR(void){
     uint16_t received = SPI1BUFL;
     
     if (received == CMD_FROM_BOARD) {
-        SPI1BUFL = REPLY_TO_BOARD;  // Queue response for next transfer
+        if (!LDR.value){
+            SPI1BUFL = LDR.value;  // Queue response for next transfer
+        } else{
+            SPI1BUFL = REPLY_TO_BOARD;
+        }
     } else{
         SPI1BUFL = 0x0FF0;
     }
