@@ -35,6 +35,7 @@ void init_spi1(void)
     RPINR20bits.SDI1R = 26;    // SDI (MISO) -> RP26
     RPOR9bits.RP19R   = 7;     // SDO (MOSI) -> RP19
     RPOR10bits.RP21R  = 8;     // SCK -> RP21 
+    ANSGbits.ANSELG7 = 0;
 
     // Chip Select pin (RB1)
     ANSELGbits.ANSG9 = 0;      // Set RB1 as digital
@@ -52,10 +53,10 @@ uint16_t SPI1_Transfer16(uint16_t data)
     LATGbits.LATG9 = 0;        // Assert CS (active low)
     __delay_us(5);
 
-    SPI1BUFL = data;           // Send
-    while (!SPI1STATLbits.SPIRBF); // Wait receive complete
-    rx = SPI1BUFL;             // Read response
-
+    SPI1BUFL = data;                    // Send
+    while (!SPI1STATLbits.SPIRBF);      // Wait receive complete
+    rx = SPI1BUFL;                      // Read response
+    
     __delay_us(5);
     LATGbits.LATG9 = 1;        // De-assert CS
     
