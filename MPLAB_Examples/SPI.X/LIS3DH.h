@@ -34,6 +34,7 @@
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h>
 #include <stdio.h>
+#include "common.h"
 // TODO Insert appropriate #include <>
 #define WHO_AM_I_reg 0x0F
 #define WHO_AM_I 0x33

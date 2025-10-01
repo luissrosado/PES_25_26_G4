@@ -41,11 +41,11 @@
 #define WRITE 0x0000; // MSb 0, é 16 bits porque a transferencia é de 16bits
 // TODO Insert declarations
 void spi_config_master();
-void spi1_enable();
-void spi1_disable();
-void spi1_write(int16_t *data);
-void spi1_read(int16_t *data);
-uint16_t spi1_transfer(uint16_t dataOut);
+void spi2_enable();
+void spi2_disable();
+void spi2_write(int16_t *data);
+void spi2_read(int16_t *data);
+uint16_t spi2_transfer(uint16_t dataOut);
 void spi2PinConfig();
 
 
