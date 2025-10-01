@@ -92,7 +92,8 @@ void setupSPI1Slave(uint16_t SCLK_Pin, uint16_t CS_Pin, uint16_t MISO_Pin, uint1
     IEC3bits.SPI1RXIE = 0;
     IFS3bits.SPI1RXIF = 0;
     
-    SPI1CON1Lbits.SPIEN = 0;  // Disable SPI1 before config
+    SPI1CON1Lbits.SPIEN = 0;   // Disable SPI1 before config
+    SPI1CON1Lbits.SPISIDL = 0; // Enable SPI1 during idle
     
     SPI1CON1L = 0;
     SPI1CON1H = 0;
@@ -100,7 +101,7 @@ void setupSPI1Slave(uint16_t SCLK_Pin, uint16_t CS_Pin, uint16_t MISO_Pin, uint1
     SPI1CON2 = 0;
     
     RPINR20bits.SDI1R = MOSI_Pin;  // SDI1 input (MOSI)
-    RPOR7bits.RP15R = 0b00111;     // SDO1 output (MISO)
+    RPOR7bits.RP14R = 0b00111;     // SDO1 output (MISO)
     RPINR20bits.SCK1R = SCLK_Pin;  // SCK1 input
     RPINR21bits.SS1R  = CS_Pin;    // SS1 input
     

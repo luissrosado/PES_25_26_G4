@@ -6,10 +6,10 @@
 #include <xc.h> // include processor files - each processor file is guarded.  
 
 // ===== SPI1 Pin Mapping =====
-#define SPI1_MISO_RPIN   15   // RP15 -> SDO1 (Master In, Slave Out)
-#define SPI1_MOSI_RPIN   14   // RP14 -> SDI1 (Master Out, Slave In)
-#define SPI1_SCLK_RPIN   13   // RP13 -> SCLK1
-#define SPI1_CS_RPIN     12   // RP12 -> CS1 (Slave Select)
+#define SPI1_MOSI_RPIN   15   // [RED]    RP15 -> SDI1 (Master Out, Slave In)
+#define SPI1_MISO_RPIN   14   // [ORANGE] RP14 -> SDO1 (Master In, Slave Out) SETUP IN SPI SETUP FUNCTION
+#define SPI1_SCLK_RPIN   13   // [YELLOW] RP13 -> SCLK1
+#define SPI1_CS_RPIN     12   // [GREEN]  RP12 -> CS1 (Slave Select)
 
 // ===== SPI Constants =====
 #define CMD_FROM_BOARD  0xAAAA

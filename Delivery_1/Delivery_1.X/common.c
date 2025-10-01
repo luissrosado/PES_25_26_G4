@@ -39,8 +39,8 @@ void setup(void){
     // Insert your setup code here, to run once:
     pinMode(RB12, INPUT);
     pinMode(RB13, INPUT);
-    pinMode(RB14, INPUT);
-    pinMode(RB15, OUTPUT);
+    pinMode(RB14, OUTPUT);
+    pinMode(RB15, INPUT);
     setupSPI1Slave(SPI1_SCLK_RPIN, SPI1_CS_RPIN, SPI1_MISO_RPIN, SPI1_MOSI_RPIN);
     
     pinMode(LDR_PIN, INPUT);
