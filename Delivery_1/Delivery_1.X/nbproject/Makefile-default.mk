@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c common.c ldr.c SPI.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c common.c ldr.c SPI_Slave.c axl.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/common.o ${OBJECTDIR}/ldr.o ${OBJECTDIR}/SPI.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/common.o.d ${OBJECTDIR}/ldr.o.d ${OBJECTDIR}/SPI.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/common.o ${OBJECTDIR}/ldr.o ${OBJECTDIR}/SPI_Slave.o ${OBJECTDIR}/axl.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/common.o.d ${OBJECTDIR}/ldr.o.d ${OBJECTDIR}/SPI_Slave.o.d ${OBJECTDIR}/axl.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/common.o ${OBJECTDIR}/ldr.o ${OBJECTDIR}/SPI.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/common.o ${OBJECTDIR}/ldr.o ${OBJECTDIR}/SPI_Slave.o ${OBJECTDIR}/axl.o
 
 # Source Files
-SOURCEFILES=main.c common.c ldr.c SPI.c
+SOURCEFILES=main.c common.c ldr.c SPI_Slave.c axl.c
 
 
 
@@ -107,11 +107,17 @@ ${OBJECTDIR}/ldr.o: ldr.c  .generated_files/flags/default/2c6d0a1077d9a68f0f0cf1
 	@${RM} ${OBJECTDIR}/ldr.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ldr.c  -o ${OBJECTDIR}/ldr.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ldr.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/SPI.o: SPI.c  .generated_files/flags/default/d3004717687d3f7dac1832064925ab95d33e6245 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/SPI_Slave.o: SPI_Slave.c  .generated_files/flags/default/bee2e82703a41dd0e7433d956b60ed699e45df29 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/SPI.o.d 
-	@${RM} ${OBJECTDIR}/SPI.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  SPI.c  -o ${OBJECTDIR}/SPI.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/SPI.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	@${RM} ${OBJECTDIR}/SPI_Slave.o.d 
+	@${RM} ${OBJECTDIR}/SPI_Slave.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  SPI_Slave.c  -o ${OBJECTDIR}/SPI_Slave.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/SPI_Slave.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/axl.o: axl.c  .generated_files/flags/default/6b4c4f090d64dc0f793c23a8e036923b3223164 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/axl.o.d 
+	@${RM} ${OBJECTDIR}/axl.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  axl.c  -o ${OBJECTDIR}/axl.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/axl.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 else
 ${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/c5f14f5eba5d0b869092ae877fc96edbf144e625 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
@@ -132,11 +138,17 @@ ${OBJECTDIR}/ldr.o: ldr.c  .generated_files/flags/default/273dece5f74b3746153736
 	@${RM} ${OBJECTDIR}/ldr.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ldr.c  -o ${OBJECTDIR}/ldr.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ldr.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/SPI.o: SPI.c  .generated_files/flags/default/bd62f6ccb6face40b22c267d92092180f2776dd1 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/SPI_Slave.o: SPI_Slave.c  .generated_files/flags/default/2eccb0cfff7afb332df84869fc94cae17ea4753c .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/SPI.o.d 
-	@${RM} ${OBJECTDIR}/SPI.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  SPI.c  -o ${OBJECTDIR}/SPI.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/SPI.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	@${RM} ${OBJECTDIR}/SPI_Slave.o.d 
+	@${RM} ${OBJECTDIR}/SPI_Slave.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  SPI_Slave.c  -o ${OBJECTDIR}/SPI_Slave.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/SPI_Slave.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/axl.o: axl.c  .generated_files/flags/default/76e680dfd6d6a69ef363182e59b92a5749e23049 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/axl.o.d 
+	@${RM} ${OBJECTDIR}/axl.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  axl.c  -o ${OBJECTDIR}/axl.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/axl.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 endif
 

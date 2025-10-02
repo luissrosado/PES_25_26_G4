@@ -7,7 +7,7 @@
 
 
 #include "spi.h"
-#include "common.h"
+#include "../../PIC24_Lib/PIC24FJ256GA702_lib.X/PIC24FJ256GA702_lib.h"
 
 void spi_config_master(){
     PMD1bits.SPI2MD=0;      // ligar power module spi2

@@ -4,14 +4,14 @@
  *         Gonçalo Antunes
  *         Gonçalo Batalha
  *
- * Created on September 9, 2025, 11:38 PM
  */
 
 
 #include "common.h"
 #include "../../PIC24_Lib/PIC24FJ256GA702_lib.X/PIC24FJ256GA702_lib.h"
 #include "ldr.h"
-#include "SPI.h"
+#include "SPI_Slave.h"
+#include "axl.h"
 
 
 #define LED_PIN RB5
@@ -19,10 +19,14 @@
 #define LDR_SEL 0x0001  // Indicates the ADC what's the LDR pin
 
 
+uint8_t AXL_flag = 0;
+volatile LIS axl;
+
 // Timer 1 Interrupt Function
 void T1_ISR(void){
     toggleDigitalPin(LED_PIN);
     AD1CON1bits.ASAM = 1;           // Start ADC Conversion
+    AXL_flag = 1;
     
     IFS0bits.T1IF = 0;
     return;
@@ -35,12 +39,21 @@ void setup(void){
     pinMode(LED_PIN, OUTPUT);
     digitalWrite(LED_PIN, HIGH);
     
-    // Insert your setup code here, to run once:
+    // Setup SPI Slave for the Bridge
     pinMode(RB12, INPUT);
     pinMode(RB13, INPUT);
     pinMode(RB14, OUTPUT);
     pinMode(RB15, INPUT);
     setupSPI1Slave(SPI1_SCLK_RPIN, SPI1_CS_RPIN, SPI1_MISO_RPIN, SPI1_MOSI_RPIN);
+    
+    // Setup SPI Master for the Accelerometer
+    pinMode(RB2, INPUT);
+    pinMode(RB6, OUTPUT);
+    pinMode(RB7, OUTPUT);
+    pinMode(RB3, OUTPUT);
+    setupSPI2Master(SPI2_SCLK_RPIN, SPI2_CS_RPIN, SPI2_MISO_RPIN, SPI2_MOSI_RPIN);
+    // Config the Accelerometer Module
+    LISconfig();
     
     pinMode(LDR_PIN, INPUT);
     setupADC(
@@ -72,7 +85,8 @@ void setup(void){
     // Interrupt flags setup
     setupInterrupt(ADC1_INTERRUPT, 7);
     setupInterrupt(T1_INTERRUPT, 6);
-    setupInterrupt(SPI1_RX_INTERRUPT, 5);
+    setupInterrupt(SPI1_RX_INTERRUPT, 4);
+    //setupInterrupt(SPI2_RX_INTERRUPT, 5);
     
     ENABLE_INTERRUPTS;
     
@@ -83,6 +97,10 @@ void setup(void){
 void loop(void){
     // Insert your loop code here, to run repeatedly:
     Idle();
+    if(AXL_flag){
+        readAXL(&axl);
+        AXL_flag = 0;
+    }
     
     return;
 }

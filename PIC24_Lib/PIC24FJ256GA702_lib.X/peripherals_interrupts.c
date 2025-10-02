@@ -92,7 +92,10 @@ void setupSPI1Slave(uint16_t SCLK_Pin, uint16_t CS_Pin, uint16_t MISO_Pin, uint1
     IEC3bits.SPI1RXIE = 0;
     IFS3bits.SPI1RXIF = 0;
     
-    SPI1CON1Lbits.SPIEN = 0;   // Disable SPI1 before config
+    IEC0bits.SPI1TXIE = 0;
+    IFS0bits.SPI1TXIF = 0;
+    
+    SPI1CON1Lbits.SPIEN   = 0; // Disable SPI1 before config
     SPI1CON1Lbits.SPISIDL = 0; // Enable SPI1 during idle
     
     SPI1CON1L = 0;
@@ -100,8 +103,8 @@ void setupSPI1Slave(uint16_t SCLK_Pin, uint16_t CS_Pin, uint16_t MISO_Pin, uint1
     SPI1CON2L = 0;
     SPI1CON2 = 0;
     
-    RPINR20bits.SDI1R = MOSI_Pin;  // SDI1 input (MOSI)
-    RPOR7bits.RP14R = 0b00111;     // SDO1 output (MISO)
+    RPINR20bits.SDI1R = MOSI_Pin;  // SDI1 input  (MOSI)
+    RPOR7bits.RP14R = 0b00111;     // SDO1 output (MISO)    // HAS TO BE SETUP MANUALLY
     RPINR20bits.SCK1R = SCLK_Pin;  // SCK1 input
     RPINR21bits.SS1R  = CS_Pin;    // SS1 input
     
@@ -110,7 +113,7 @@ void setupSPI1Slave(uint16_t SCLK_Pin, uint16_t CS_Pin, uint16_t MISO_Pin, uint1
     SPI1STATLbits.SPIROV = 0;   // Clear overflow
 
     // Use Standard Buffer mode (clear ENHBUF) unless you want enhanced
-    SPI1CON1Lbits.ENHBUF = 0;   // step 4: standard buffer
+    SPI1CON1Lbits.ENHBUF = 0;   // Standard buffer
     
     SPI1IMSKLbits.SPIRBFEN = 1; // Enable Interrupt Event by Full Receive Buffer
 
@@ -125,4 +128,44 @@ void setupSPI1Slave(uint16_t SCLK_Pin, uint16_t CS_Pin, uint16_t MISO_Pin, uint1
     SPI1CON1Lbits.SPIEN  = 1;   // Enable SPI1
     
     return;
+}
+
+void setupSPI2Master(uint16_t SCLK_Pin, uint16_t CS_Pin, uint16_t MISO_Pin, uint16_t MOSI_Pin){
+    // Enable the SPI2 Module
+    PMD1bits.SPI2MD = 0;
+    
+    IEC3bits.SPI2RXIE = 0;
+    IFS3bits.SPI2RXIF = 0;
+    
+    SPI2CON1Lbits.SPIEN   = 0; // Disable SPI1 before config
+    SPI2CON1Lbits.SPISIDL = 0; // Enable SPI1 during idle
+    
+    SPI2CON1L = 0;
+    SPI2CON1H = 0;
+    SPI2CON2L = 0;
+    SPI2CON2 = 0;
+    
+    RPINR22bits.SDI2R = MISO_Pin;   // MDI2 input  (MISO)
+    RPOR3bits.RP6R    = 10;         // MDO2 output (MOSI)   // HAS TO BE SETUP MANUALLY
+    RPOR3bits.RP7R    = 11;         // SCK2 output          // HAS TO BE SETUP MANUALLY
+    RPOR1bits.RP3R    = 12;         // SS2  output          // HAS TO BE SETUP MANUALLY
+    
+    volatile uint16_t dump;
+    while (SPI2STATLbits.SPIRBF) dump = SPI1BUFL; // clear RX
+    SPI2STATLbits.SPIROV = 0;   // Clear overflow
+
+    // Use Standard Buffer mode (clear ENHBUF) unless you want enhanced
+    SPI2CON1Lbits.ENHBUF = 0;   // Standard buffer
+    
+    SPI2IMSKLbits.SPIRBFEN = 1; // Enable Interrupt Event by Full Receive Buffer
+
+    SPI2CON1Lbits.MSTEN = 0;    // 0 = Slave mode
+    SPI2CON1Lbits.SSEN  = 1;    // Enable Slave Select pin
+    SPI2CON1Lbits.CKP   = 0;    // Idle clock is low
+    SPI2CON1Lbits.CKE   = 1;    // Data changes on transition from active to idle clock state
+    SPI2CON1Lbits.SMP   = 0;    // Input data sampled in the middle
+    SPI2CON1Lbits.MODE32 = 0;
+    SPI2CON1Lbits.MODE16 = 1;
+    
+    SPI2CON1Lbits.SPIEN  = 1;   // Enable SPI2
 }

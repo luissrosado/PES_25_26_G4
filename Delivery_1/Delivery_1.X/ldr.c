@@ -1,8 +1,9 @@
 /*
  * File:   ldr.c
  * Author: João Duarte
+ *         Gonçalo Antunes
+ *         Gonçalo Batalha
  *
- * Created on 22 September 2025, 00:21
  */
 
 

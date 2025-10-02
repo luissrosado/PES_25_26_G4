@@ -121,8 +121,8 @@ struct interrupt_t{
 #define T3_ISR              __attribute__((__interrupt__, auto_psv)) _T3Interrupt
 #define SPI1_GEN_INTERRUPT  ((struct interrupt_t){&IFS0, &IEC0, 9, &IPC2, 6})
 #define SPI1_GEN_ISR        __attribute__((__interrupt__, auto_psv)) _SPI1Interrupt
-#define SPI1_DONE_INTERRUPT ((struct interrupt_t){&IFS0, &IEC0, 10, &IPC2, 10})
-#define SPI1_DONE_ISR       __attribute__((__interrupt__, auto_psv)) _SPI1TXInterrupt
+#define SPI1_TX_INTERRUPT   ((struct interrupt_t){&IFS0, &IEC0, 10, &IPC2, 10})
+#define SPI1_TX_ISR         __attribute__((__interrupt__, auto_psv)) _SPI1TXInterrupt
 #define U1_RX_INTERRUPT     ((struct interrupt_t){&IFS0, &IEC0, 11, &IPC2, 14})
 #define U1_RX_ISR           __attribute__((__interrupt__, auto_psv)) _U1RXInterrupt
 #define U1_TX_INTERRUPT     ((struct interrupt_t){&IFS0, &IEC0, 12, &IPC3, 2})
@@ -136,6 +136,11 @@ struct interrupt_t{
 #define I2C1_M_INTERRUPT    ((struct interrupt_t){&IFS1, &IEC1, 1, &IPC4, 6})
 #define I2C1_M_ISR          __attribute__((__interrupt__, auto_psv)) _MI2C1Interrupt
 // -- More exist here in the middle but were not needed -- //
+#define SPI2_GEN_INTERRUPT  ((struct interrupt_t){&IFS2, &IEC2, 0, &IPC8, 2})
+#define SPI2_GEN_ISR        __attribute__((__interrupt__, auto_psv)) _SPI2Interrupt
+#define SPI2_TX_INTERRUPT   ((struct interrupt_t){&IFS2, &IEC2, 1, &IPC8, 6})
+#define SPI2_TX_ISR         __attribute__((__interrupt__, auto_psv)) _SPI2TXInterrupt
+// -- More exist here in the middle but were not needed -- //
 #define SPI1_RX_INTERRUPT   ((struct interrupt_t){&IFS3, &IEC3, 10, &IPC14, 10})
 #define SPI1_RX_ISR         __attribute__((__interrupt__, auto_psv)) _SPI1RXInterrupt
 #define SPI2_RX_INTERRUPT   ((struct interrupt_t){&IFS3, &IEC3, 11, &IPC14, 14})
@@ -147,7 +152,6 @@ void setupInterrupt(struct interrupt_t interrupt, uint8_t priority);
 #define ENABLE_INTERRUPTS   INTCON2bits.GIE = 1;                // Enable the Global Interrupt Flag  
 #define DISABLE_INTERRUPTS  INTCON2bits.GIE = 0;                // Disable the Global Interrupt Flag  
 #define TOGGLE_INTERRUPTS   INTCON2bits.GIE = !INTCON2bits.GIE; // Toggle the Global Interrupt Flags
-
 
 
 /**
@@ -202,6 +206,22 @@ void setupOsc(
  * MOSI_Pin  - Select MOSI Pin
  */
 void setupSPI1Slave(uint16_t SCLK_Pin, uint16_t CS_Pin, uint16_t MISO_Pin, uint16_t MOSI_Pin);
+
+/**
+    <p><b>Function prototype:</b></p>
+ * void setupSPI1Slave(uint16_t SCLK_Pin, uint16_t CS_Pin, uint16_t MISO_Pin, uint16_t MOSI_Pin)
+
+    <p><b>Description:</b></p>
+ * Sets up SPI2 as a Master in the following pins
+ * SCLK_Pin, CS_Pin, MISO_Pin, MOSI_Pin
+
+    <p><b>Parameters:</b></p>
+ * SCLK_Pin  - Select SCLK Pin
+ * CS_Pin    - Select CS Pin
+ * MISO_Pin  - Select MISO Pin
+ * MOSI_Pin  - Select MOSI Pin
+ */
+void setupSPI2Master(uint16_t SCLK_Pin, uint16_t CS_Pin, uint16_t MISO_Pin, uint16_t MOSI_Pin);
 
 #ifdef	__cplusplus
 extern "C" {

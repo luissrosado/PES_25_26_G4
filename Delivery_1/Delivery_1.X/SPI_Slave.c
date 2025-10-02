@@ -1,14 +1,15 @@
 /*
- * File:   SPI.c
+ * File:   SPI_Slave.c
  * Author: João Duarte
+ *         Gonçalo Antunes
+ *         Gonçalo Batalha
  *
- * Created on 24 September 2025, 22:33
  */
 
-
 #include "xc.h"
-#include "SPI.h"
+#include "SPI_Slave.h"
 #include "ldr.h"
+#include "axl.h"
 #include "../../PIC24_Lib/PIC24FJ256GA702_lib.X/PIC24FJ256GA702_lib.h"
 
 
@@ -35,17 +36,17 @@ void SPI1_RX_ISR(void){
     #if USE_AXL
         // TEMP AXL
         case CMD_AXL_X:
-            SPI1BUFL = 0x1001;
+            SPI1BUFL = axl.accelX;
             
             break;
             
         case CMD_AXL_Y:
-            SPI1BUFL = 0x1002;
+            SPI1BUFL = axl.accelY;
             
             break;
             
         case CMD_AXL_Z:
-            SPI1BUFL = 0x1004;
+            SPI1BUFL = axl.accelZ;
             
             break;
     #endif

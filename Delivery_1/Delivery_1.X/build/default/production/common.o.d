@@ -3,7 +3,7 @@ build/default/production/common.o: common.c common.h \
  ../../PIC24_Lib/PIC24FJ256GA702_lib.X/GPIO.h \
  ../../PIC24_Lib/PIC24FJ256GA702_lib.X/common_lib.h \
  ../../PIC24_Lib/PIC24FJ256GA702_lib.X/peripherals_interrupts.h ldr.h \
- SPI.h
+ SPI_Slave.h axl.h
 
 common.h:
 
@@ -17,4 +17,6 @@ common.h:
 
 ldr.h:
 
-SPI.h:
+SPI_Slave.h:
+
+axl.h:

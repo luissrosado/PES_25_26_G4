@@ -13,7 +13,6 @@
 #define	COMMON_H
 
 #include <xc.h> // include processor files - each processor file is guarded.
-#include "../../PIC24_Lib/PIC24FJ256GA702_lib.X/PIC24FJ256GA702_lib.h"
 
 // TODO Insert appropriate #include <>
 

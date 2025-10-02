@@ -1,5 +1,5 @@
 /*
- * File:   SPI.h
+ * File:   SPI_Slave.h
  * Author: João Duarte
  *         Gonçalo Antunes
  *         Gonçalo Batalha
@@ -8,8 +8,8 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef SPI_H
-#define	SPI_H
+#ifndef SPI_SLAVE_H
+#define	SPI_SLAVE_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 
@@ -43,4 +43,4 @@ extern "C" {
 }
 #endif /* __cplusplus */
 
-#endif	/* SPI_H */
+#endif	/* SPI_SLAVE_H */

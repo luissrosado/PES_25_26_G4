@@ -7,6 +7,7 @@
 
 #define FCY 1000000
 #include <libpic30.h>
+#include "../../PIC24_Lib/PIC24FJ256GA702_lib.X/PIC24FJ256GA702_lib.h"
 
 #include "LIS3DH.h"
 #include "spi.h"
