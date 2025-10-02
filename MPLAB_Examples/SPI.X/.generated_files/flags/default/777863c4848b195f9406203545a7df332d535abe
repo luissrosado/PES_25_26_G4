@@ -1,5 +1,0 @@
-<<<<<<<< Updated upstream:MPLAB_Examples/SPI.X/.generated_files/flags/default/777863c4848b195f9406203545a7df332d535abe
- -c -mcpu=$(MP_PROCESSOR_OPTION)      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"C:\Users\gbata\OneDrive\Documentos\GitHub\PES_25_26_G4\MPLAB_Examples\SPI.X\common.c
-========
- -c -mcpu=$(MP_PROCESSOR_OPTION)      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"C:\Users\gbata\OneDrive\Documentos\GitHub\PES_25_26_G4\MPLAB_Examples\SPI.X\spi.c
->>>>>>>> Stashed changes:MPLAB_Examples/SPI.X/.generated_files/flags/default/c2a6e369979d4327461a8cad8f747dbb2913a9f2

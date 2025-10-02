@@ -5,10 +5,13 @@
  *         Gonçalo Batalha
  */
 
-
+#define FCY 1000000
 #include "xc.h"
 #include "common.h"
 #include "spi.h"
+#include "LIS3DH.h"
+#include "libpic30.h"
+
 
 // Always runs this to start some key registers at key values
 void alwaysSetup(void){
@@ -33,16 +36,24 @@ void alwaysSetup(void){
     PMD7 = 0xFFFF;
     PMD8 = 0xFFFF;
     
+    pinMode(RB3, OUTPUT);
     return;
 }
 
 int main(void){
     alwaysSetup();
-    
+    int8_t data;
+    LIS acc;
     setup();
+    pinMode(RB5, OUTPUT);
     spi_config_master();
+    spi2_enable();
+    data=who_am();
+    LISconfig();
     while(1){
-        loop();
+        //loop();
+        accel(&acc);
+        __delay_ms(50);
     }
     
     return 0;
