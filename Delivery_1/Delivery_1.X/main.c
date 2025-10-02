@@ -8,9 +8,12 @@
 
 #include "xc.h"
 #include "common.h"
+#include "../../PIC24_Lib/PIC24FJ256GA702_lib.X/PIC24FJ256GA702_lib.h"
 
 // Always runs this to start some key registers at key values
 void alwaysSetup(void){
+    DISABLE_INTERRUPTS;
+    
     ANSELA = 0;
     ANSELB = 0;
     

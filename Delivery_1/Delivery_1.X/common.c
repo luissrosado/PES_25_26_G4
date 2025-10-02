@@ -14,7 +14,6 @@
 #include "SPI.h"
 
 
-
 #define LED_PIN RB5
 #define LDR_PIN AN1
 #define LDR_SEL 0x0001  // Indicates the ADC what's the LDR pin
@@ -52,6 +51,7 @@ void setup(void){
         0,                  // Disable channel scanning
         1                   // Enable 12-bit mode
     );
+    LDR.threshold = LDR_THRESHOLD;
     
     // Setup Oscillator with the FRC = 8 MHz
     // OSCDIV = 0x0005 means frequency = 8 MHz / 10 = 0.8 MHz
@@ -67,11 +67,13 @@ void setup(void){
     // Fcy = 0.8/2 = 0.4 MHz
     // Prescaler = 256
     // PR1 = Timer period * Fcy / Prescaler + 1 = 15626
-    setupTimer1(0x8030, 15626);      // Enables timer with 256 Prescaler and the FRC
+    setupTimer1(0x8030, 10);      // Enables timer with 256 Prescaler and the FRC
     
     // Interrupt flags setup
-    setupInterrupt(ADC1_INTERRUPT, 6);
+    setupInterrupt(ADC1_INTERRUPT, 7);
     setupInterrupt(T1_INTERRUPT, 6);
+    setupInterrupt(SPI1_RX_INTERRUPT, 5);
+    
     ENABLE_INTERRUPTS;
     
     
@@ -80,7 +82,7 @@ void setup(void){
 
 void loop(void){
     // Insert your loop code here, to run repeatedly:
-    //Idle();
+    Idle();
     
     return;
 }

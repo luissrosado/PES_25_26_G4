@@ -121,9 +121,6 @@ void setupSPI1Slave(uint16_t SCLK_Pin, uint16_t CS_Pin, uint16_t MISO_Pin, uint1
     SPI1CON1Lbits.SMP   = 0;    // Input data sampled in the middle
     SPI1CON1Lbits.MODE32 = 0;
     SPI1CON1Lbits.MODE16 = 1;
-
-    // === Configure SPI Interrupt ===
-    setupInterrupt(SPI1_RX_INTERRUPT, 7);
     
     SPI1CON1Lbits.SPIEN  = 1;   // Enable SPI1
     

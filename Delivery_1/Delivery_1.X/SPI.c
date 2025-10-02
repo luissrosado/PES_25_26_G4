@@ -8,33 +8,57 @@
 
 #include "xc.h"
 #include "SPI.h"
+#include "ldr.h"
+#include "../../PIC24_Lib/PIC24FJ256GA702_lib.X/PIC24FJ256GA702_lib.h"
 
-<<<<<<< Updated upstream
-=======
-extern LDR_Registers_t LDR;
+
 #define USE_LDR 1
->>>>>>> Stashed changes
+#define USE_AXL 1
 
 // SPI 1 Interrupt Function
 void SPI1_RX_ISR(void){
     uint16_t received = SPI1BUFL;
     
-    if (received == CMD_FROM_BOARD) {
-<<<<<<< Updated upstream
-        SPI1BUFL = REPLY_TO_BOARD;  // Queue response for next transfer
-=======
-    #if USE_LDR 
-        if (!LDR.value){
-            SPI1BUFL = LDR.value;  // Queue response for next transfer
-        } else{
-            SPI1BUFL = REPLY_TO_BOARD;
-        }
-    #else 
-        SPI1BUFL = REPLY_TO_BOARD;
+    switch (received){
+    #if USE_LDR
+        case CMD_LDR_VAL:
+            SPI1BUFL = LDR.value;
+            
+            break;
+            
+        case CMD_LDR_CNT:
+            SPI1BUFL = LDR.count;
+            
+            break;
     #endif
->>>>>>> Stashed changes
-    } else{
-        SPI1BUFL = 0x0FF0;
+            
+    #if USE_AXL
+        // TEMP AXL
+        case CMD_AXL_X:
+            SPI1BUFL = 0x1001;
+            
+            break;
+            
+        case CMD_AXL_Y:
+            SPI1BUFL = 0x1002;
+            
+            break;
+            
+        case CMD_AXL_Z:
+            SPI1BUFL = 0x1004;
+            
+            break;
+    #endif
+            
+            
+        case CMD_ERROR:
+            SPI1BUFL = ERR_REPLY_TO_BOARD;
+            
+            break;
+            
+        default:
+            SPI1BUFL = STD_REPLY_TO_BOARD;
+            
     }
   
     if (SPI1STATLbits.SPIROV) {
