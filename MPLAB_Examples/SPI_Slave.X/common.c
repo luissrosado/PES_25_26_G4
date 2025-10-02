@@ -21,7 +21,7 @@ void SPI1_RX_ISR(void){
     } else{
         SPI1BUFL = 0x0FF0;
     }
-    toggleDigitalPin(RA0);
+    toggleDigitalPin(RB5);
   
     if (SPI1STATLbits.SPIROV) {
         volatile uint8_t dump = SPI1BUFL;
@@ -45,8 +45,8 @@ void setup(void){
     );
     
     // Setup Pin RA0 to a digital output
-    pinMode(RA0, OUTPUT);
-    digitalWrite(RA0, LOW);
+    pinMode(RB5, OUTPUT);
+    digitalWrite(RB5, LOW);
     
     // Insert your setup code here, to run once:
     pinMode(RB12, INPUT);

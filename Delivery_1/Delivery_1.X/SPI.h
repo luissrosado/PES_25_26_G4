@@ -13,7 +13,7 @@
 
 // ===== SPI Constants =====
 #define CMD_FROM_BOARD  0xAAAA
-#define REPLY_TO_BOARD  0x00AA
+#define REPLY_TO_BOARD  0x0C2E
 
 #ifdef	__cplusplus
 extern "C" {
