@@ -52,8 +52,6 @@ void setup(void){
     pinMode(RB7, OUTPUT);
     pinMode(RB3, OUTPUT);
     setupSPI2Master(SPI2_SCLK_RPIN, SPI2_CS_RPIN, SPI2_MISO_RPIN, SPI2_MOSI_RPIN);
-    // Config the Accelerometer Module
-    LISconfig();
     
     pinMode(LDR_PIN, INPUT);
     setupADC(
@@ -82,6 +80,9 @@ void setup(void){
     // PR1 = Timer period * Fcy / Prescaler + 1 = 15626
     setupTimer1(0x8030, 10);      // Enables timer with 256 Prescaler and the FRC
     
+    // Config the Accelerometer Module
+    LISconfig();
+    
     // Interrupt flags setup
     setupInterrupt(ADC1_INTERRUPT, 7);
     setupInterrupt(T1_INTERRUPT, 6);
@@ -97,7 +98,7 @@ void setup(void){
 void loop(void){
     // Insert your loop code here, to run repeatedly:
     Idle();
-    if(AXL_flag){
+    if(AXL_flag != 0){
         readAXL(&axl);
         AXL_flag = 0;
     }

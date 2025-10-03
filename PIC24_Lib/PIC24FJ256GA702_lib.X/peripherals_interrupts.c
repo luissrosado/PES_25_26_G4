@@ -137,8 +137,8 @@ void setupSPI2Master(uint16_t SCLK_Pin, uint16_t CS_Pin, uint16_t MISO_Pin, uint
     IEC3bits.SPI2RXIE = 0;
     IFS3bits.SPI2RXIF = 0;
     
-    SPI2CON1Lbits.SPIEN   = 0; // Disable SPI1 before config
-    SPI2CON1Lbits.SPISIDL = 0; // Enable SPI1 during idle
+    SPI2CON1Lbits.SPIEN   = 0; // Disable SPI2 before config
+    SPI2CON1Lbits.SPISIDL = 0; // Enable SPI2 during idle
     
     SPI2CON1L = 0;
     SPI2CON1H = 0;
@@ -159,10 +159,9 @@ void setupSPI2Master(uint16_t SCLK_Pin, uint16_t CS_Pin, uint16_t MISO_Pin, uint
     
     SPI2IMSKLbits.SPIRBFEN = 1; // Enable Interrupt Event by Full Receive Buffer
 
-    SPI2CON1Lbits.MSTEN = 0;    // 0 = Slave mode
-    SPI2CON1Lbits.SSEN  = 1;    // Enable Slave Select pin
-    SPI2CON1Lbits.CKP   = 0;    // Idle clock is low
-    SPI2CON1Lbits.CKE   = 1;    // Data changes on transition from active to idle clock state
+    SPI2CON1Lbits.MSTEN = 1;    // 1 = Master mode
+    SPI2CON1Lbits.CKP   = 1;    // Idle clock is low
+    SPI2CON1Lbits.CKE   = 0;    // Data changes on transition from active to idle clock state
     SPI2CON1Lbits.SMP   = 0;    // Input data sampled in the middle
     SPI2CON1Lbits.MODE32 = 0;
     SPI2CON1Lbits.MODE16 = 1;
