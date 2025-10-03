@@ -4,13 +4,13 @@ Tool Name:
   c:\program files\microchip\xc16\v2.10\bin\bin\..\bin/elf-ld.exe
 
 Command:
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00007428.00 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00007428.01 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00007428.02 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00007428.03 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00007428.04 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00007428.05 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00007428.06 \
+  -TC:\\Users\\joaoc\\AppData\\Local\\Temp\\tmp00005ee0.00 \
+  -TC:\\Users\\joaoc\\AppData\\Local\\Temp\\tmp00005ee0.01 \
+  -TC:\\Users\\joaoc\\AppData\\Local\\Temp\\tmp00005ee0.02 \
+  -TC:\\Users\\joaoc\\AppData\\Local\\Temp\\tmp00005ee0.03 \
+  -TC:\\Users\\joaoc\\AppData\\Local\\Temp\\tmp00005ee0.04 \
+  -TC:\\Users\\joaoc\\AppData\\Local\\Temp\\tmp00005ee0.05 \
+  -TC:\\Users\\joaoc\\AppData\\Local\\Temp\\tmp00005ee0.06 \
   -p24FJ256GA702 \
   --mdfp=C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC24F-GA-GB_DFP/1.9.336/xc16 \
   -o \

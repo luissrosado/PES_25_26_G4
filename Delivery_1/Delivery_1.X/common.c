@@ -86,7 +86,7 @@ void setup(void){
     // Interrupt flags setup
     setupInterrupt(ADC1_INTERRUPT, 7);
     setupInterrupt(T1_INTERRUPT, 6);
-    setupInterrupt(SPI1_RX_INTERRUPT, 4);
+    setupInterrupt(SPI1_RX_INTERRUPT, 5);
     //setupInterrupt(SPI2_RX_INTERRUPT, 5);
     
     ENABLE_INTERRUPTS;

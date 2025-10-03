@@ -75,10 +75,10 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100               0x228           0x33c  (828)
-.text                        0x328               0x952           0xdfb  (3579)
-.dinit                       0xc7a                0x14            0x1e  (30)
+.text                        0x328               0x950           0xdf8  (3576)
+.dinit                       0xc78                0x14            0x1e  (30)
 
-                 Total "program" memory used (bytes):         0x1155  (4437) 1%
+                 Total "program" memory used (bytes):         0x1152  (4434) 1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x4000]
@@ -134,18 +134,18 @@ External Symbols in Program Memory (by address):
                   0x000760                  _setupOsc
                   0x000784                  _setupSPI1Slave
                   0x00081a                  _setupSPI2Master
-                  0x000896                  _setup
-                  0x000aa6                  _loop
-                  0x000aba                  _pinMode
-                  0x000b50                  _digitalWrite
-                  0x000baa                  _toggleDigitalPin
-                  0x000c1e                  _alwaysSetup
-                  0x000c52                  _main
-                  0x000c5c                  _ADC_check
+                  0x000894                  _setup
+                  0x000aa4                  _loop
+                  0x000ab8                  _pinMode
+                  0x000b4e                  _digitalWrite
+                  0x000ba8                  _toggleDigitalPin
+                  0x000c1c                  _alwaysSetup
+                  0x000c50                  _main
+                  0x000c5a                  _ADC_check
 
 External Symbols in Program Memory (by name):
 
-                  0x000c5c                  _ADC_check
+                  0x000c5a                  _ADC_check
                   0x00034a                  _LISconfig
                   0x000328                  _SPI2_Pool_Transfer
                   0x000248                  __ADC1Interrupt
@@ -156,20 +156,20 @@ External Symbols in Program Memory (by name):
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x000c1e                  _alwaysSetup
-                  0x000b50                  _digitalWrite
-                  0x000aa6                  _loop
-                  0x000c52                  _main
-                  0x000aba                  _pinMode
+                  0x000c1c                  _alwaysSetup
+                  0x000b4e                  _digitalWrite
+                  0x000aa4                  _loop
+                  0x000c50                  _main
+                  0x000ab8                  _pinMode
                   0x000434                  _readAXL
-                  0x000896                  _setup
+                  0x000894                  _setup
                   0x000666                  _setupADC
                   0x0006a4                  _setupInterrupt
                   0x000760                  _setupOsc
                   0x000784                  _setupSPI1Slave
                   0x00081a                  _setupSPI2Master
                   0x000650                  _setupTimer1
-                  0x000baa                  _toggleDigitalPin
+                  0x000ba8                  _toggleDigitalPin
 
 Memory Configuration
 
@@ -304,7 +304,7 @@ __FDEVOPT1
  .debug_abbrev    0x000526         0x88 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
  .debug_abbrev    0x0005ae        0x156 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
 
-.debug_line       0x000000        0x925
+.debug_line       0x000000        0x924
  *(.debug_line)
  .debug_line      0x000000        0x118 build/default/production/main.o
  .debug_line      0x000118        0x1ac build/default/production/common.o
@@ -312,7 +312,7 @@ __FDEVOPT1
  .debug_line      0x0003eb        0x131 build/default/production/SPI_Slave.o
  .debug_line      0x00051c        0x187 build/default/production/axl.o
  .debug_line      0x0006a3        0x113 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
- .debug_line      0x0007b6        0x16f ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
+ .debug_line      0x0007b6        0x16e ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
 
 .debug_frame      0x000000        0x2fc
  *(.debug_frame)
@@ -1785,30 +1785,30 @@ __c30_signature
  .ivt._SPI1RXInterrupt
                   0x000088          0x2 build/default/production/SPI_Slave.o
 
-.text             0x000328        0x952
+.text             0x000328        0x950
  .text            0x000328        0x328 build/default/production/axl.o
                   0x000328                  _SPI2_Pool_Transfer
                   0x00034a                  _LISconfig
                   0x000434                  _readAXL
- .text            0x000650        0x246 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
+ .text            0x000650        0x244 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
                   0x000650                  _setupTimer1
                   0x000666                  _setupADC
                   0x0006a4                  _setupInterrupt
                   0x000760                  _setupOsc
                   0x000784                  _setupSPI1Slave
                   0x00081a                  _setupSPI2Master
- .text            0x000896        0x224 build/default/production/common.o
-                  0x000896                  _setup
-                  0x000aa6                  _loop
- .text            0x000aba        0x164 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
-                  0x000aba                  _pinMode
-                  0x000b50                  _digitalWrite
-                  0x000baa                  _toggleDigitalPin
- .text            0x000c1e         0x3e build/default/production/main.o
-                  0x000c1e                  _alwaysSetup
-                  0x000c52                  _main
- .text            0x000c5c         0x1e build/default/production/ldr.o
-                  0x000c5c                  _ADC_check
+ .text            0x000894        0x224 build/default/production/common.o
+                  0x000894                  _setup
+                  0x000aa4                  _loop
+ .text            0x000ab8        0x164 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
+                  0x000ab8                  _pinMode
+                  0x000b4e                  _digitalWrite
+                  0x000ba8                  _toggleDigitalPin
+ .text            0x000c1c         0x3e build/default/production/main.o
+                  0x000c1c                  _alwaysSetup
+                  0x000c50                  _main
+ .text            0x000c5a         0x1e build/default/production/ldr.o
+                  0x000c5a                  _ADC_check
 
-.dinit            0x000c7a         0x14
- .dinit           0x000c7a         0x14 data_init
+.dinit            0x000c78         0x14
+ .dinit           0x000c78         0x14 data_init
