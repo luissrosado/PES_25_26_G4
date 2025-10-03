@@ -78,7 +78,7 @@ void setup(void){
     // Fcy = 0.8/2 = 0.4 MHz
     // Prescaler = 256
     // PR1 = Timer period * Fcy / Prescaler + 1 = 15626
-    setupTimer1(0x8030, 10);      // Enables timer with 256 Prescaler and the FRC
+    setupTimer1(0x8030, 15626);      // Enables timer with 256 Prescaler and the FRC
     
     // Config the Accelerometer Module
     LISconfig();
