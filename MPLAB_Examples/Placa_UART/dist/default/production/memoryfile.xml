@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <executable name="dist/default/production/Placa_UART.production.elf">
+    <memory name="data">
+      <units>bytes</units>
+      <length>32768</length>
+      <used>204</used>
+      <free>32564</free>
+    </memory>
+    <memory name="program">
+      <units>bytes</units>
+      <length>1056000</length>
+      <used>12237</used>
+      <free>1043763</free>
+    </memory>
+  </executable>
+</project>
