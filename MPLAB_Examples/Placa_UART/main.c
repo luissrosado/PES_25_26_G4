@@ -149,6 +149,7 @@ int main(void) {
             {
                 char newVal = SerialReadChar();
                 TEMP_THRESH = (int)newVal;
+                Nop();
                 sprintf(buffer, "TEMP_THRESH=%d\r\n", TEMP_THRESH);
                 SerialSendString(buffer);
             }
