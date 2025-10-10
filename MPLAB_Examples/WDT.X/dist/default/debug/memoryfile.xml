@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project>
-  <executable name="dist/default/debug/Blueprint_v1-0.X.debug.elf">
+  <executable name="dist/default/debug/WDT.X.debug.elf">
     <memory name="data">
       <units>bytes</units>
       <length>16384</length>
-      <used>78</used>
-      <free>16306</free>
+      <used>80</used>
+      <free>16304</free>
     </memory>
     <memory name="program">
       <units>bytes</units>
       <length>263424</length>
-      <used>507</used>
-      <free>262917</free>
+      <used>2352</used>
+      <free>261072</free>
     </memory>
   </executable>
 </project>

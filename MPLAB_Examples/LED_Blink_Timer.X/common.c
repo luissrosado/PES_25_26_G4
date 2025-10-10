@@ -10,12 +10,12 @@
 #include "common.h"
 #include "../../PIC24_Lib/PIC24FJ256GA702_lib.X/PIC24FJ256GA702_lib.h"
 
-#define LED_PIN RB15
+#define LED_PIN RB5
 
 void T1_ISR(void){
     IFS0bits.T1IF = 0;
     
-    //toggleDigitalPin(LED_PIN);
+    toggleDigitalPin(LED_PIN);
     
     return;
 }
@@ -37,7 +37,7 @@ void setup(void){
     
     
     // Interrupt flags
-    setupInterrupt(T1_INTERRUPT, 6);
+    setupInterrupt(T1_INTERRUPT, 7);
     ENABLE_INTERRUPTS;
     
     return;
@@ -46,8 +46,8 @@ void setup(void){
 void loop(void){
     // Insert your loop code here, to run repeatedly:
     // Using idle, the internal clock keeps working and so does Timer1
-    //Idle();
-    digitalWrite(LED_PIN, HIGH);
+    Idle();
+    
     // Using sleep, the internal clock stops working and so does Timer1
     // Unless it is using an external clock
     //Sleep();

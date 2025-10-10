@@ -1,8 +1,9 @@
 /*
  * File:   GPIO.c
  * Author: João Duarte
+ *         Gonçalo Antunes
+ *         Gonçalo Batalha
  *
- * Created on 16 September 2025, 20:28
  */
 
 

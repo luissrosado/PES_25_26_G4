@@ -1,22 +1,20 @@
-Microchip Technology Inc, v2.10 (B)
+Microchip Technology Inc, v2.10 (A)
 
 Tool Name:
   c:\program files\microchip\xc16\v2.10\bin\bin\..\bin/elf-ld.exe
 
 Command:
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.00 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.01 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.02 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.03 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.04 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.05 \
-  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp000079dc.06 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00009c70.00 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00009c70.01 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00009c70.02 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00009c70.03 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00009c70.04 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00009c70.05 \
+  -TC:\\Users\\JOODUA~1\\AppData\\Local\\Temp\\tmp00009c70.06 \
   -p24FJ256GA702 \
-  --mdfp=C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC24F-GA-GB_DFP/1.10.375/xc16 \
   -o \
-  dist/default/debug/Blueprint_v1-0.X.debug.elf \
+  dist/default/debug/WDT.X.debug.elf \
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/.. \
-  -LC:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC24F-GA-GB_DFP/1.10.375/xc16/bin/../support/PIC24F/gld \
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../lib \
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/PIC24E/gld \
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/PIC24F/gld \
@@ -32,6 +30,7 @@ Command:
   --defsym=__MPLAB_BUILD=1 \
   --defsym=__MPLAB_DEBUG=1 \
   --defsym=__DEBUG=1 \
+  --defsym=__MPLAB_DEBUGGER_PK3=1 \
   -Tp24FJ256GA702.gld.07 \
   --stack=16 \
   --check-sections \
@@ -44,7 +43,7 @@ Command:
   --stackguard=16 \
   --no-force-link \
   --smart-io \
-  -Map=dist/default/debug/Blueprint_v1-0.X.debug.map \
+  -Map=dist/default/debug/WDT.X.debug.map \
   --report-mem \
   --memorysummary \
   dist/default/debug/memoryfile.xml \
@@ -54,10 +53,14 @@ Command:
   --library=c99-elf \
   -end-group \
 
-
-Optional library libpPIC24Fxxx.a not found
 Archive member included because of file (symbol)
 
+..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
+                              build/default/debug/common.o (_pinMode)
+..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
+                              build/default/debug/common.o (_setupTimer1)
+
+Optional library libpPIC24Fxxx.a not found
 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
                               (__resetPRI)
 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_24.o)
@@ -66,7 +69,7 @@ c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_s
                               (__crt_start_mode_normal)
 
 
-xc16-ld 2.10 (B)
+xc16-ld 2.10 (A)
 
 Default Code Model: Small
 Default Data Model: Large
@@ -76,10 +79,11 @@ Default Scalar Model: Small
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
-.text                        0x100               0x10a           0x18f  (399)
-.text                        0x20a                0x48            0x6c  (108)
+.text                        0x100               0x14e           0x1f5  (501)
+.text                        0x24e               0x4ca           0x72f  (1839)
+.dinit                       0x718                 0x8             0xc  (12)
 
-                 Total "program" memory used (bytes):          0x1fb  (507) <1%
+                 Total "program" memory used (bytes):          0x930  (2352) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x4000]
@@ -92,9 +96,10 @@ reserve_data_0x81e           0x81e                 0x2             0x2  (2)
 reserve_data_0x820           0x820                 0x2             0x2  (2)
 reserve_data_0x822           0x822                 0x2             0x2  (2)
 reserve_data_0x824           0x824                 0x4             0x4  (4)
+.nbss                        0x828                   0             0x2  (2)
 reserve_data_0x82a           0x82a                0x26            0x26  (38)
 
-                 Total "data" memory used (bytes):           0x4e  (78) <1%
+                 Total "data" memory used (bytes):           0x50  (80) <1%
 
 
 Dynamic Memory Usage
@@ -109,29 +114,57 @@ stack                        0x850                              0x3fb0  (16304)
 Info: Project is using a large data memory model when small data memory model is sufficient.
 
 
+External Symbols in Data Memory (by address):
+
+                    0x0828                  _wdt_test
+
+External Symbols in Data Memory (by name):
+
+                    0x0828                  _wdt_test
+
 External Symbols in Program Memory (by address):
 
                   0x000100                  __resetPRI
                   0x00013c                  __psv_init
                   0x000152                  __data_init
                   0x000152                  __data_init_da
-                  0x000204                  __DefaultInterrupt
-                  0x00020a                  _alwaysSetup
-                  0x00023c                  _main
-                  0x000246                  _setup
-                  0x00024c                  _loop
+                  0x000204                  __T1Interrupt
+                  0x000248                  __DefaultInterrupt
+                  0x00024e                  _setupTimer1
+                  0x000264                  _setupADC
+                  0x0002a2                  _setupInterrupt
+                  0x000340                  _setupOsc
+                  0x000364                  _setupSPI1Slave
+                  0x0003fa                  _setupSPI2Master
+                  0x000474                  _pinMode
+                  0x000512                  _digitalWrite
+                  0x000570                  _toggleDigitalPin
+                  0x0005e4                  _setup
+                  0x0006aa                  _loop
+                  0x0006d8                  _alwaysSetup
+                  0x00070e                  _main
 
 External Symbols in Program Memory (by name):
 
-                  0x000204                  __DefaultInterrupt
+                  0x000248                  __DefaultInterrupt
+                  0x000204                  __T1Interrupt
                   0x000152                  __data_init
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x00020a                  _alwaysSetup
-                  0x00024c                  _loop
-                  0x00023c                  _main
-                  0x000246                  _setup
+                  0x0006d8                  _alwaysSetup
+                  0x000512                  _digitalWrite
+                  0x0006aa                  _loop
+                  0x00070e                  _main
+                  0x000474                  _pinMode
+                  0x0005e4                  _setup
+                  0x000264                  _setupADC
+                  0x0002a2                  _setupInterrupt
+                  0x000340                  _setupOsc
+                  0x000364                  _setupSPI1Slave
+                  0x0003fa                  _setupSPI2Master
+                  0x00024e                  _setupTimer1
+                  0x000570                  _toggleDigitalPin
 
 Memory Configuration
 
@@ -194,6 +227,7 @@ LOAD ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA7
                     0x0001                  __MPLAB_BUILD = 0x1
                     0x0001                  __MPLAB_DEBUG = 0x1
                     0x0001                  __DEBUG = 0x1
+                    0x0001                  __MPLAB_DEBUGGER_PK3 = 0x1
 LOAD pPIC24Fxxx
 LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libfx-elf.a
                     0x2af00                  __FSEC = 0x2af00
@@ -217,7 +251,7 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libfx-elf.a
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
 
-.text             0x000100        0x10a
+.text             0x000100        0x14e
  *(.init)
  .init            0x000100         0x4c c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
                   0x000100                  __resetPRI
@@ -229,16 +263,18 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libfx-elf.a
  *(.user_init)
  *(.handle)
  *(.isr*)
- .isr             0x000204          0x4 default_isr
-                  0x000204                  __DefaultInterrupt
+ .isr.text        0x000204         0x44 build/default/debug/common.o
+                  0x000204                  __T1Interrupt
+ .isr             0x000248          0x4 default_isr
+                  0x000248                  __DefaultInterrupt
  *(.libc)
  *(.libm)
  *(.libdsp)
  *(.lib*)
  .libpic30_crt_start_mode
-                  0x000208          0x2 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normalda.Meo)
-                  0x000208                  __crt_start_mode
-                  0x000208                  __crt_start_mode_normal
+                  0x00024c          0x2 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normalda.Meo)
+                  0x00024c                  __crt_start_mode
+                  0x00024c                  __crt_start_mode_normal
 
 usercode
  *(usercode)
@@ -273,26 +309,39 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000        0x477
+.debug_info       0x000000       0x2622
  *(.debug_info)
- .debug_info      0x000000        0x322 build/default/debug/main.o
- .debug_info      0x000322        0x155 build/default/debug/common.o
+ .debug_info      0x000000        0x317 build/default/debug/main.o
+ .debug_info      0x000317        0x6e1 build/default/debug/common.o
+ .debug_info      0x0009f8        0x2fb ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
+ .debug_info      0x000cf3       0x192f ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000         0xa4
+.debug_abbrev     0x000000        0x382
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x70 build/default/debug/main.o
- .debug_abbrev    0x000070         0x34 build/default/debug/common.o
+ .debug_abbrev    0x000070        0x134 build/default/debug/common.o
+ .debug_abbrev    0x0001a4         0x88 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
+ .debug_abbrev    0x00022c        0x156 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
 
-.debug_line       0x000000        0x150
+.debug_line       0x000000        0x4c7
  *(.debug_line)
- .debug_line      0x000000        0x118 build/default/debug/main.o
- .debug_line      0x000118         0x38 build/default/debug/common.o
+ .debug_line      0x000000         0xee build/default/debug/main.o
+ .debug_line      0x0000ee        0x159 build/default/debug/common.o
+ .debug_line      0x000247        0x113 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
+ .debug_line      0x00035a        0x16d ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
 
-.debug_frame      0x000000         0x90
+.debug_frame      0x000000        0x1e8
  *(.debug_frame)
  .debug_frame     0x000000         0x48 build/default/debug/main.o
- .debug_frame     0x000048         0x48 build/default/debug/common.o
+ .debug_frame     0x000048         0x8e build/default/debug/common.o
+ .debug_frame     0x0000d6         0x62 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
+ .debug_frame     0x000138         0xb0 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
+
+.debug_str        0x000000        0x195
+ *(.debug_str)
+ .debug_str       0x000000         0x27 build/default/debug/common.o
+ .debug_str       0x000027        0x16e ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
 
 .debug_loc
  *(.debug_loc)
@@ -301,22 +350,30 @@ __FDEVOPT1
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000         0x50
+                  0x000000        0x128
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x2b build/default/debug/main.o
  .debug_pubnames
-                  0x00002b         0x25 build/default/debug/common.o
+                  0x00002b         0x43 build/default/debug/common.o
+ .debug_pubnames
+                  0x00006e         0x44 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
+ .debug_pubnames
+                  0x0000b2         0x76 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
 
 .debug_ranges
  *(.debug_ranges)
 
-.debug_aranges    0x000000         0x30
+.debug_aranges    0x000000         0x60
  *(.debug_aranges)
  .debug_aranges
                   0x000000         0x18 build/default/debug/main.o
  .debug_aranges
                   0x000018         0x18 build/default/debug/common.o
+ .debug_aranges
+                  0x000030         0x18 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
+ .debug_aranges
+                  0x000048         0x18 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
                     0x0000                  WREG0 = 0x0
                     0x0000                  _WREG0 = 0x0
                     0x0002                  WREG1 = 0x2
@@ -1644,6 +1701,12 @@ __FDEVOPT1
                     0x023e                  _OC2 = 0x23e
                     0x0248                  OC3 = 0x248
                     0x0248                  _OC3 = 0x248
+                    0x03fe                  SPI1 = 0x3fe
+                    0x03fe                  _SPI1 = 0x3fe
+                    0x041a                  SPI2 = 0x41a
+                    0x041a                  _SPI2 = 0x41a
+                    0x0436                  SPI3 = 0x436
+                    0x0436                  _SPI3 = 0x436
                     0x0398                  UART1 = 0x398
                     0x0398                  _UART1 = 0x398
                     0x03ae                  UART2 = 0x3ae
@@ -1653,31 +1716,67 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a
 LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a
 END GROUP
-OUTPUT(dist/default/debug/Blueprint_v1-0.X.debug.elf elf32-pic30)
+OUTPUT(dist/default/debug/WDT.X.debug.elf elf32-pic30)
 LOAD default_isr
+LOAD data_init
 
 .debug_pubtypes
-                  0x000030         0x31
+                  0x000060        0x395
  .debug_pubtypes
-                  0x000030         0x1f build/default/debug/main.o
+                  0x000060         0x1f build/default/debug/main.o
  .debug_pubtypes
-                  0x00004f         0x12 build/default/debug/common.o
+                  0x00007f         0xa2 build/default/debug/common.o
+ .debug_pubtypes
+                  0x000121         0x35 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
+ .debug_pubtypes
+                  0x000156        0x29f ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
 
 __c30_signature
-                  0x000061         0x18
+                  0x0003f5         0x24
  __c30_signature
-                  0x000061          0x6 build/default/debug/main.o
+                  0x0003f5          0x6 build/default/debug/main.o
  __c30_signature
-                  0x000067          0x6 build/default/debug/common.o
+                  0x0003fb          0x6 build/default/debug/common.o
  __c30_signature
-                  0x00006d          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
+                  0x000401          0x6 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
  __c30_signature
-                  0x000073          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_24.o)
+                  0x000407          0x6 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
+ __c30_signature
+                  0x00040d          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
+ __c30_signature
+                  0x000413          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_24.o)
 
-.text             0x00020a         0x48
- .text            0x00020a         0x3c build/default/debug/main.o
-                  0x00020a                  _alwaysSetup
-                  0x00023c                  _main
- .text            0x000246          0xc build/default/debug/common.o
-                  0x000246                  _setup
-                  0x00024c                  _loop
+.nbss               0x0828          0x2
+ .nbss              0x0828          0x2 build/default/debug/common.o
+                    0x0828                  _wdt_test
+
+.config_WDTCLK    0x02af20          0x2
+ .config_WDTCLK
+                  0x02af20          0x2 build/default/debug/common.o
+
+.ivt._T1Interrupt
+                  0x00001a          0x2
+ .ivt._T1Interrupt
+                  0x00001a          0x2 build/default/debug/common.o
+
+.text             0x00024e        0x4ca
+ .text            0x00024e        0x226 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(peripherals_interrupts.o)
+                  0x00024e                  _setupTimer1
+                  0x000264                  _setupADC
+                  0x0002a2                  _setupInterrupt
+                  0x000340                  _setupOsc
+                  0x000364                  _setupSPI1Slave
+                  0x0003fa                  _setupSPI2Master
+ .text            0x000474        0x170 ..\..\PIC24_Lib\PIC24FJ256GA702_lib.X\dist\default\production\PIC24FJ256GA702_lib.X.a(GPIO.o)
+                  0x000474                  _pinMode
+                  0x000512                  _digitalWrite
+                  0x000570                  _toggleDigitalPin
+ .text            0x0005e4         0xf4 build/default/debug/common.o
+                  0x0005e4                  _setup
+                  0x0006aa                  _loop
+ .text            0x0006d8         0x40 build/default/debug/main.o
+                  0x0006d8                  _alwaysSetup
+                  0x00070e                  _main
+
+.dinit            0x000718          0x8
+ .dinit           0x000718          0x8 data_init

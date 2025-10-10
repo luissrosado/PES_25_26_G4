@@ -66,9 +66,9 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100               0x10a           0x18f  (399)
-.text                        0x20a                0x48            0x6c  (108)
+.text                        0x20a                0x4c            0x72  (114)
 
-                 Total "program" memory used (bytes):          0x1fb  (507) <1%
+                 Total "program" memory used (bytes):          0x201  (513) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x4000]
@@ -99,9 +99,9 @@ External Symbols in Program Memory (by address):
                   0x000152                  __data_init_da
                   0x000204                  __DefaultInterrupt
                   0x00020a                  _alwaysSetup
-                  0x00023c                  _main
-                  0x000246                  _setup
-                  0x00024c                  _loop
+                  0x000240                  _main
+                  0x00024a                  _setup
+                  0x000250                  _loop
 
 External Symbols in Program Memory (by name):
 
@@ -111,9 +111,9 @@ External Symbols in Program Memory (by name):
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
                   0x00020a                  _alwaysSetup
-                  0x00024c                  _loop
-                  0x00023c                  _main
-                  0x000246                  _setup
+                  0x000250                  _loop
+                  0x000240                  _main
+                  0x00024a                  _setup
 
 Memory Configuration
 
@@ -1625,10 +1625,10 @@ __c30_signature
  __c30_signature
                   0x000073          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_24.o)
 
-.text             0x00020a         0x48
- .text            0x00020a         0x3c build/default/production/main.o
+.text             0x00020a         0x4c
+ .text            0x00020a         0x40 build/default/production/main.o
                   0x00020a                  _alwaysSetup
-                  0x00023c                  _main
- .text            0x000246          0xc build/default/production/common.o
-                  0x000246                  _setup
-                  0x00024c                  _loop
+                  0x000240                  _main
+ .text            0x00024a          0xc build/default/production/common.o
+                  0x00024a                  _setup
+                  0x000250                  _loop
