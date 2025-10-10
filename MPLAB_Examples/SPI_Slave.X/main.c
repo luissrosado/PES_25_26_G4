@@ -14,8 +14,8 @@ void alwaysSetup(void){
     ANSELA = 0;
     ANSELB = 0;
     
-    TRISA = 0;
-    TRISB = 0;
+    TRISA = 0xFFFF;
+    TRISB = 0xFFFF;
     
     LATA = 0;
     LATB = 0;
